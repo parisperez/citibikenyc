@@ -1,0 +1,14 @@
+<div class="nav">
+  <ul>
+    <% if logged_in? %>
+    <div class="logo">
+    <li><%= link_to "Awesome Citi", root_path %> </li>
+    </div>
+    <li><%= link_to "My Account", account_path %> </li>
+    <li><%= link_to "New Search", new_search_path %> </li>
+    <li><%= link_to 'Logout', session_path, :method => :delete %> </li>
+    <% end %>
+  </ul>
+</div>
+<h2>Edit Your New Info:</h2>
+<%= render 'form' %>

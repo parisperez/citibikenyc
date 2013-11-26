@@ -1,0 +1,53 @@
+<div class="well">
+    <div class="results">
+      <% unless @coordinates.nil? %>
+        
+        <ul>
+          <% if @winning_bike_station["label"] == @winning_dock_station["label"]  %> 
+          <li><%= "CityBike Station:"%><address><%= "#{@winning_bike_station["label"].gsub("Broadway & W 24 St","1107 Broadway")}"%></address></li>
+          <li><%="Docks: #{@winning_bike_station["availableDocks"] }.  Bikes: #{@winning_bike_station["availableBikes"] }"  %></li>
+        </ul>
+        <% else %>
+        <ul>
+          <li><%= "Docks:"%><address><%="#{@winning_dock_station["label"].gsub("Broadway & W 24 St","1107 Broadway")}"%></address></li>
+          <li><%="Available: #{@winning_dock_station["availableDocks"] }" %></li></br>
+          <li><%= "Bikes: "%><address><%="#{@winning_bike_station["label"]}"%></address></li>
+          <li><%="Available: #{@winning_bike_station["availableBikes"] }" %></li>
+        </ul>   
+        <% end %>
+      <% end  %>
+
+      <!-- next closest staton -->
+      <% if @winning_bike_station["label"] == @winning_dock_station["label"] %>
+        <ul>  
+          <li>Next closest station:</li>       
+          <li><address><%= "#{@next_best_station[0]["label"].gsub("Broadway & W 24 St","1107 Broadway")}"%></address></li>
+          <li><%= "Docks: #{@next_best_station[0]["availableDocks"]}.  Bikes: #{@next_best_station[0]["availableBikes"]}" %></li>
+        <ul>
+      <% end %>    
+    </div> <!-- results -->
+
+    <!-- save this destination -->
+    <div class="destination">
+        <%= form_tag user_favorites_path(current_user), :method => :post do %>
+        <%= hidden_field_tag "favorite[address]", params[:address]%>
+        <%= submit_tag "Save This Destination", :class => 'saved_destination', :name => :address %> 
+        <% end %>
+    </div>
+
+    <div class="new_search">
+        <h6><%= link_to "New Search", new_search_path %></h6>
+    </div>  
+</div>
+
+<script>
+ $(document).ready(function () {
+    //Convert address tags to google map links - Copyright Michael Jasper 2011
+    $('address').each(function () {
+        var link = "<a href='http://maps.google.com/maps?q=" + encodeURIComponent( $(this).text() ) + " NY" + "' target='_blank'>" + $(this).text() + "</a>";
+        $(this).html(link);
+    });
+}); 
+</script>
+
+

@@ -1,0 +1,30 @@
+<!--   <div class="twitter">
+    <ul> -->
+
+<!--       <li><a href="https://twitter.com/awesomeciti"><img src="http://a1.twimg.com/profile_images/568641116/french.jpg" alt="citibird" height="120" width="180"></a></li>
+      <li>Commute with us on Twitter.</li>
+    </ul>  
+  </div> -->
+
+<div class="well"> 
+  <ul>
+    <h1>AWESOME CITY / NYC</h1>
+    <h3>I can't find a dock you say.</h3>
+    <h3>There's an app for that we say.</h3>
+   </ul> 
+</div>    
+
+    <% unless logged_in?  %> 
+      <h2><%= link_to "Log In", new_session_path %> |
+      <%= link_to "Create Account", new_user_path %>
+      </h2>
+    <% end  %>
+
+
+    <% if logged_in? %>
+      <h2>
+      <%= link_to "New Search", new_search_path %> |
+      <%= link_to 'Logout', session_path, :method => :delete %>
+      </h2> 
+    <% end %>
+

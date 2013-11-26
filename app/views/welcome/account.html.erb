@@ -1,0 +1,13 @@
+
+<div class="well">
+  <div class="account">
+     <ul>
+      <% if logged_in? %></li>
+      <li><%= link_to "Edit My Account", edit_user_path(current_user) %></li>
+      <li><%= link_to "Delete My Account", user_path(current_user), :method => :delete %></li>
+      <li><%= link_to "Saved Destinations", user_path(current_user) %></li>
+      <li><%= link_to 'Logout', session_path, :method => :delete %></li>
+      <% end %>
+    </ul>
+  </div>
+
