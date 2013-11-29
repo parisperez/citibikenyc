@@ -16,6 +16,7 @@
             <% if logged_in? %>
             <li><%= link_to "Awesome Citi", root_path %> </li>
             <li><%= link_to "My Account", account_path %> </li>
+            <li><%= link_to "New Exchange", new_exchange_path %> </li>
             <li><%= link_to "New Search", new_search_path %> </li>
             <li><%= link_to "Saved Destinations", user_path(current_user) %></li>
             <li><a href="http://citibikenyc.com/stations"target="_blank">Station Map</a></li>

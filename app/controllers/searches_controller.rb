@@ -1,9 +1,5 @@
 class SearchesController < ApplicationController
-
-  # TODO change search index to redirect to a refresh of the results page.
-  # TODO add bootstrap
-  # TODO add text messaging
-  
+ 
   def new
     render :new
   end
@@ -16,9 +12,13 @@ class SearchesController < ApplicationController
       @coordinates = { latitude: @coordinates[0], longitude: @coordinates[1] }
       @all_citibike_stations = Citibikenyc.stations.values[2]
 
+########### exclude stations where there are no bikes or docks available
+
       available_stations_for_docks = @all_citibike_stations.reject { |d| d["availableDocks"] == 0 }
 
       available_stations_for_bikes = @all_citibike_stations.reject { |d| d["availableBikes"] == 0 } 
+
+########### end exclude logic
 
       @winning_dock_station = available_stations_for_docks.min_by do |station|
         distance_x = @coordinates[:longitude] - station["longitude"]
