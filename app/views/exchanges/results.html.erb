@@ -9,43 +9,6 @@
   </div>
 </div>
 
-<h6>Schedule an exchange:</h6>
-<div class="panel-body">
-  <%= form_for [@current_user, @exchange], :action => :create, :html => {:class => 'form',:role => 'form'} do |f| %>
-  
-  <div class="form group">
-    <%= f.label :date %></br> 
-    <%= f.date_field :date %></br>
-  </div>  
-
-  <div class="form group">
-    <%= f.label :time %></br> 
-    <%= f.time_field :time %></br> 
-  </div> 
-
-  <div class="form group">
-    <%= f.label :price %></br> 
-    <%= f.number_field :price %></br> 
-  </div> 
-
-  <div class="checkbox">
-      <label>
-         <%= "bike" %> 
-         <input type="checkbox" class="input_checkbox" name="is_bike" value="true">
-      </label>
-      <label>
-        <%= "dock" %> 
-        <input type="checkbox" class="input_checkbox" name="is_bike" value="false">
-      </label>
-  </div>  
-
-
-   <br>
-   <br>
-  <%= f.submit nil, class: "btn btn-primary" %>
-  <% end %> 
-</div>
-
   <div class="well">
     <div class="new_search">
         <h6><%= link_to "Start a New Exchange", new_exchange_path %></h6>

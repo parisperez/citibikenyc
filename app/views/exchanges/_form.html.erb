@@ -1,0 +1,39 @@
+<h6>Schedule an exchange:</h6>
+<div class="panel-body">
+  <%= form_for [@current_user, Exchange.new], :action => :create do |f| %>
+  
+  <div class="form group">
+    <%= f.label :date %></br> 
+    <%= f.date_field :date %></br>
+  </div>  
+
+  <div class="form group">
+    <%= f.label :time %></br> 
+    <%= f.time_field :time %></br> 
+  </div> 
+
+  <div class="form group">
+    <%= f.label :price %></br> 
+    <%= f.number_field :price %></br> 
+  </div> 
+
+  <div class="checkbox">
+      <label>
+         <%= "bike" %> 
+         <input type="checkbox" class="input_checkbox" name="is_bike" value="true">
+      </label>
+   </div>
+   <div class="checkbox">    
+      <label>
+        <%= "dock" %> 
+        <input type="checkbox" class="input_checkbox" name="is_bike" value="false">
+      </label>
+  </div>  
+
+
+   <br>
+   <br>
+  <%= f.submit nil, class: "btn btn-primary" %>
+   <% end %> 
+</div>
+

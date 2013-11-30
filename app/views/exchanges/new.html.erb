@@ -1,14 +1,4 @@
 <div class="container">
-  <div class="well">
-    <div class="search_title">
-      <h7>Search for a station to schedule your exchange:</h7>  
-    </div>
-    <div class="form">
-        <%= form_tag exchanges_path, :method => :post do %>  
-        <%= text_field_tag :address, params[:address], placeholder: 'street city and zip...'%>  
-        <%= submit_tag "Go", :class => 'go' %>   
-        <% end %>  
-    </div> 
-  </div>
-
+    
+  <%= render 'form' %>
 </div>

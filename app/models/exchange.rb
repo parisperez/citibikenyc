@@ -1,4 +1,13 @@
 class Exchange < ActiveRecord::Base
-  validates :is_bike, :date, :time, presence: true
-  has_and_belongs_to_many :users
+  validates :is_bike, :date, :time, :price, presence: true
+  belongs_to :requester,
+    :class_name => 'User',
+    :primary_key => 'user_id',
+    :foreign_key => 'vendor_id'
+  belongs_to :vendor,
+    :class_name => 'User',
+    :primary_key => 'user_id',
+    :foreign_key => 'vendor_id'   
 end
+
+
