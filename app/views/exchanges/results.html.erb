@@ -1,28 +1,14 @@
 <div class="well">
-  <div class="results">
-    <% unless @coordinates.nil? %>        
-      <ul> 
-        <li><%= "CityBike Station:"%><address><%= "#{@winning_station["label"].gsub("Broadway & W 24 St","1107 Broadway")}"%></address></li>
-        <li>Current Status: <%="#{@winning_station["availableDocks"]  } docks  /  #{@winning_station["availableBikes"]  } bikes"  %></li>
-      </ul>
-    <% end %>
-  </div>
+  <h2>All Exchanges:</h2>
+  <% @exchanges.each do |exchange| %>
+  <ul>
+    <li>ID: <%= exchange.id %></li>
+    <li>Date: <%= exchange.date %></li>
+    <li>Time: <%= exchange.time %></li>
+    <li>Price: <%= exchange.price %></li>
+    <li>Is_Bike: <%= exchange.is_bike %></li>
+  </ul>
+  <% end %>
 </div>
-
-  <div class="well">
-    <div class="new_search">
-        <h6><%= link_to "Start a New Exchange", new_exchange_path %></h6>
-    </div>  
-  </div> 
-
-<script>
- $(document).ready(function () {
-    //Convert address tags to google map links - Copyright Michael Jasper 2011
-    $('address').each(function () {
-        var link = "<a href='http://maps.google.com/maps?q=" + encodeURIComponent( $(this).text() ) + " NY" + "' target='_blank'>" + $(this).text() + "</a>";
-        $(this).html(link);
-    });
-  }); 
-</script>
 
 
