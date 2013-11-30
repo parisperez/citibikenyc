@@ -16,7 +16,20 @@ class ExchangesController < ApplicationController
       else
         @exchange.is_bike = false
       end
-       # binding.pry
+
+      @coordinates = Geocoder.coordinates(params[:station])
+      unless @coordinates.nil?
+
+        @coordinates = { latitude: @coordinates[0], longitude: @coordinates[1] }
+        all_citibike_stations = Citibikenyc.stations.values[2]
+
+        station = all_citibike_stations.min_by do |station|
+          distance_x = @coordinates[:longitude] - station["longitude"]
+          distance_y = @coordinates[:latitude] - station["latitude"]
+          Math.hypot( distance_x, distance_y )
+          @exchange.station = station
+        end 
+      end
       if @exchange.save
      
         render :results
@@ -29,7 +42,7 @@ class ExchangesController < ApplicationController
   private
 
   def exchange_params
-      params.require(:exchange).permit(:is_bike, :date, :time, :price, :requester_id)
+      params.require(:exchange).permit(:is_bike, :date, :time, :price, :requester_id, :station)
   end
 
 end

@@ -2,7 +2,9 @@
   <h2>All Exchanges:</h2>
   <% @exchanges.each do |exchange| %>
   <ul>
-    <li>requester: <%= exchange.requester_id %></li>
+    <li>ID: <%= exchange.id %></li>
+    <li>Requester: <%= exchange.requester_id %></li>
+    <li>Station: <%= exchange.station %></li>
     <li>Date: <%= exchange.date %></li>
     <li>Time: <%= exchange.time %></li>
     <li>Price: <%= exchange.price %></li>

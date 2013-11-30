@@ -1,5 +1,5 @@
 class Exchange < ActiveRecord::Base
-  validates :is_bike, :date, :time, :price, presence: true
+  validates :station, :requester_id, :is_bike, :date, :time, :price, presence: true
   belongs_to :requester,
     :class_name => 'User',
     :primary_key => 'user_id',

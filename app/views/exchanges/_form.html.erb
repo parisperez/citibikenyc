@@ -1,6 +1,11 @@
 <h6>Schedule an exchange:</h6>
 <div class="panel-body">
   <%= form_for [@current_user, @exchange], :action => :create, :html => {:class => 'form',:role => 'form'} do |f| %>
+
+  <div class="form group">
+    <%= f.label :station %>
+    <%= f.text_field :station %>
+  </div>
   
   <div class="form group">
     <%= f.label :date %></br> 
