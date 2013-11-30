@@ -9,6 +9,7 @@ class ExchangesController < ApplicationController
   def create
       @exchanges = Exchange.all
       @exchange = Exchange.new(exchange_params)  
+      @exchange.requester_id = current_user.id
       choice = params[:is_bike]    
       if choice = true
         @exchange.is_bike = true
@@ -28,7 +29,7 @@ class ExchangesController < ApplicationController
   private
 
   def exchange_params
-      params.require(:exchange).permit(:is_bike, :date, :time, :price)
+      params.require(:exchange).permit(:is_bike, :date, :time, :price, :requester_id)
   end
 
 end
