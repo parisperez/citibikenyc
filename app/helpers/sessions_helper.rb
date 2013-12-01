@@ -13,7 +13,8 @@ module SessionsHelper
     @current_user ||= User.find_by(id: session[:user_id])
   end
 
- def favorites?
+  def favorites?
     @favorites[:user_id] == nil
   end
+
 end

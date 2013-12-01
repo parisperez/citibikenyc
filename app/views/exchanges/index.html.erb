@@ -9,12 +9,13 @@
     <li>Time: <%= exchange.time %></li>
     <li>Price: <%= exchange.price %></li>
     <li>Is_bike: <%= exchange.is_bike %></li>
-    <%= button_to "claim", exchange_path(exchange), :method => :get %>
-    <%= button_to "bid", exchange_path(exchange), :method => :get %>
-
-
+    <%= button_to "select", exchange_path(exchange), :method => :get %>
   </ul>
   <% end %>
+
 </div>
+
+
+
 
 

@@ -3,6 +3,7 @@
   <ul>
     <li>ID: <%= @exchange.id %></li>
     <li>Requester: <%= @exchange.requester_id %></li>
+    <li>Vendor: <%= @exchange.vendor_id %></li>
     <li>Station: <%= @exchange.station %></li>
     <li>Date: <%= @exchange.transform_date %></li>
     <li>Time: <%= @exchange.time %></li>
@@ -13,5 +14,6 @@
     <% else %>
     <li>Need a Dock</li>
     <% end %>
+    <%= button_to "claim", claim_exchange_path(set_vendor(@exchange, @exchange.id)), :id => @exchange.id, :method => :put %>
   </ul>
 </div>
