@@ -17,22 +17,23 @@ class ExchangesController < ApplicationController
         @exchange.is_bike = false
       end
 
-      @coordinates = Geocoder.coordinates(params[:station])
+      @coordinates = Geocoder.coordinates(@exchange.station)
       unless @coordinates.nil?
 
         @coordinates = { latitude: @coordinates[0], longitude: @coordinates[1] }
-        all_citibike_stations = Citibikenyc.stations.values[2]
+        @all_citibike_stations = Citibikenyc.stations.values[2]
 
-        station = all_citibike_stations.min_by do |station|
+        @station = @all_citibike_stations.min_by do |station|
           distance_x = @coordinates[:longitude] - station["longitude"]
           distance_y = @coordinates[:latitude] - station["latitude"]
-          Math.hypot( distance_x, distance_y )
-          @exchange.station = station
+          Math.hypot( distance_x, distance_y )    
         end 
+          @exchange.station = @station["label"]
+          @exchange.save
       end
       if @exchange.save
      
-        render :results
+        render :show
       else
         render :new  
       end
