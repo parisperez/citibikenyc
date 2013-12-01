@@ -47,6 +47,7 @@ class ExchangesController < ApplicationController
 
     def index
       @exchanges = Exchange.all
+      # @exchange = Exchange.find_by(id: params[:id])
 
       render :index
     end
