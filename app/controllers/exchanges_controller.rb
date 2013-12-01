@@ -33,12 +33,23 @@ class ExchangesController < ApplicationController
           @exchange.station = @station["label"]
           @exchange.save
       end
-      if @exchange.save
+    if @exchange.save
      
-        render :show
-      else
-        render :new  
-      end
+      redirect_to exchange_path(@exchange)
+    else
+      render :new  
+    end
+
+    def show
+      @exchange = Exchange.find_by(id: params[:id])
+      render :show
+    end
+
+    def index
+      @exchanges = Exchange.all
+
+      render :index
+    end
     
   end
 

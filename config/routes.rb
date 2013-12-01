@@ -1,6 +1,6 @@
 Citibike::Application.routes.draw do
   resources :searches, only: [:new, :create, :index]
-  resources :exchanges, only: [:new, :create, :index]
+  resources :exchanges, only: [:new, :create, :index, :show]
   resources :users do
     resources :favorites
       member do
