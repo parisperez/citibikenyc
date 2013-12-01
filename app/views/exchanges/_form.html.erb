@@ -22,16 +22,16 @@
     <%= f.number_field :price %></br> 
   </div> 
 
-  <div class="checkbox">
+  <div class="radio">
       <label>
          <%= "bike" %> 
-         <input type="checkbox" class="input_checkbox" name= ":is_bike" value="true">
+         <input type="radio" class="input_radio" name= ":is_bike" value= <%= @exchange.is_bike = true %>>
       </label>
    </div>
-   <div class="checkbox">    
+   <div class="radio">    
       <label>
         <%= "dock" %> 
-        <input type="checkbox" class="input_checkbox" name=":is_bike" value="false">
+        <input type="radio" class="input_radio" name=":is_bike" value= <%= @exchange.is_bike = false %>>
       </label>
   </div>  
 

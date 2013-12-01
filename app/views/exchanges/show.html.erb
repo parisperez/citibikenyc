@@ -1,4 +1,5 @@
 <div class="well">
+  <h4></h4>
   <ul>
     <li>ID: <%= @exchange.id %></li>
     <li>Requester: <%= @exchange.requester_id %></li>
@@ -7,5 +8,10 @@
     <li>Time: <%= @exchange.time %></li>
     <li>Price: <%= @exchange.price %></li>
     <li>Is_bike: <%= @exchange.is_bike %></li>
+    <% if @exchange.is_bike == true %>
+    <li>Need a Bike</li>
+    <% else %>
+    <li>Need a Dock</li>
+    <% end %>
   </ul>
 </div>

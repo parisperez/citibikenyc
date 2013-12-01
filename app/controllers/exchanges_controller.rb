@@ -10,10 +10,12 @@ class ExchangesController < ApplicationController
       @exchanges = Exchange.all
       @exchange = Exchange.new(exchange_params)  
       @exchange.requester_id = current_user.id
-      choice = params[:is_bike]    
-      if choice = true
+
+      choice = params[":is_bike"]    
+      if choice == "true"
         @exchange.is_bike = true
-      else
+      elsif 
+        choice == "false"
         @exchange.is_bike = false
       end
 
