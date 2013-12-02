@@ -49,13 +49,15 @@ class ExchangesController < ApplicationController
 
   def index
     @exchanges = Exchange.all
+
     render :index
   end
 
   def confirm
-    @exchange = Exchange.find(params[:id])
-     binding.pry
-    @exchange.update_attributes(params[:requester_id]) 
+    # @exchange = Exchange.find(params[:id])
+     
+    # @exchange.update_attributes(params[:requester_id]) 
+    # binding.pry
     redirect_to user_path(current_user)
   end
 
