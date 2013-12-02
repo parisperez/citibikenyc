@@ -1,3 +1,34 @@
+<% @exchanges.each do |exchange| %>
+  <% if exchange.requester_id == @user.id %>
+  <h2>User view:</h2>
+  <p>Your currently scheduled exchange:</p>
+  <ul>
+    <li>Station: <%= exchange.station %></li>
+    <li>Date: <%= exchange.transform_date %></li>
+    <li>Time: <%= exchange.time %></li>
+      <% if exchange.is_bike == true %>
+          <li>Your request: Need a Bike!</li>
+      <% else %>
+         <li>Your request: Need a Dock!</li>
+      <% end %>
+    <% end  %>
+  </ul>
+  
+  <% if exchange.vendor_id == @user.id %>
+  <h2>Vendor View: </h2>
+  <p>Your currently scheduled exchange:</p>
+  <ul>
+    <li>Station: <%= exchange.station %></li>
+    <li>Date: <%= exchange.transform_date %></li>
+    <li>Time: <%= exchange.time %></li>
+      <% if exchange.is_bike == true %>
+          <li>Your service: Deliver a Bike</li>
+      <% else %>
+         <li>Your service: Open up a Dock</li>
+      <% end %>
+    <% end  %>
+  </ul>
+  <% end %>
 
 <h2>Your Saved Destinations:</h2>
   <ul>

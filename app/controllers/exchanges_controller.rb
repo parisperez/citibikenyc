@@ -15,7 +15,6 @@ class ExchangesController < ApplicationController
   def create
     @exchanges = Exchange.all
     @exchange = Exchange.new(exchange_params)  
-    @exchange.requester_id = current_user.id
 
     choice = params[":is_bike"]    
     if choice == "true"
@@ -53,6 +52,13 @@ class ExchangesController < ApplicationController
     render :index
   end
 
+  def confirm
+    @exchange = Exchange.find(params[:id])
+     binding.pry
+    @exchange.update_attributes(params[:requester_id]) 
+    redirect_to user_path(current_user)
+  end
+
   def claim
     redirect_to user_path(current_user)
   end
@@ -60,7 +66,7 @@ class ExchangesController < ApplicationController
   private
 
   def exchange_params
-      params.require(:exchange).permit(:is_bike, :date, :time, :price, :requester_id, :station)
+      params.require(:exchange).permit(:is_bike, :date, :time, :price, :station)
   end
 
 end

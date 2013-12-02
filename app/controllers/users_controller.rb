@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   self.before_action( :authenticated!, :set_user, :authorized!, except: [:new, :create] )
 
   def show
+    @exchanges = Exchange.all
     render :show
   end
 
