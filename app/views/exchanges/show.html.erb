@@ -7,8 +7,7 @@
     <li>Station: <%= @exchange.station %></li>
     <li>Date: <%= @exchange.transform_date %></li>
     <li>Time: <%= @exchange.time %></li>
-    <li>Price: <%= @exchange.price %></li>
-    <li>Is_bike: <%= @exchange.is_bike %></li>
+    <li>Price: $<%= @exchange.price %>0</li>
     <% if @exchange.is_bike == true %>
     <li>Need a Bike</li>
     <% else %>
