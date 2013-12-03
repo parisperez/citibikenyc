@@ -19,6 +19,15 @@ class Exchange < ActiveRecord::Base
   #   return "#{Date::MONTHNAMES[d.day]} #{d.dhr}, #{d.dmin}"
   # end
 
+  def set_vendor(exchange, id)
+    self.vendor_id = current_user.id
+  end
+
+  def set_requester(exchange, id)
+    # self = Exchange.find_by_id(params[:id])
+    self.requester_id = current_user.id
+  end
+
 end
 
 
