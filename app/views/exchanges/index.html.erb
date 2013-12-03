@@ -10,7 +10,7 @@
     <li>Price: <%= exchange.price %></li>
     <li>Is_bike: <%= exchange.is_bike %></li>
     <% unless exchange.requester_id == nil %>
-    <%= link_to "select", exchange_path(exchange), :method => :get %>
+    <%= button_to "select", exchange_path(exchange), :method => :get %>
     <% end %>
   </ul>
   <% end %>

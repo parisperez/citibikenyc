@@ -62,7 +62,9 @@ class ExchangesController < ApplicationController
   end
 
   def claim
-    @exchanges = Exchange.all
+    @exchange = Exchange.find(params[:id])
+    @exchange.vendor_id = current_user.id
+    @exchange.save!
     redirect_to user_path(current_user)
   end
     
