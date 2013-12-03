@@ -16,7 +16,7 @@
     <% end %>
     
     <!-- if @exchange.requester_id == nil %> -->
-    <%= button_to "confirm", confirm_exchange_path(set_requester(@exchange, @exchange.id)), :id => @exchange.id, :method => :put %>
+    <%= button_to "confirm", confirm_exchange_path, :id => @exchange.id, :method => :put %>
 
     <!-- end %> -->
      <!-- binding.pry  -->

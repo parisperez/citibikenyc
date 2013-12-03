@@ -1,5 +1,5 @@
 <% @exchanges.each do |exchange| %>
-  <% if exchange.requester_id == @user.id %>
+  <% if exchange.requester_id == current_user.id %>
   <h2>User view:</h2>
   <p>Your currently scheduled exchange:</p>
   <ul>
@@ -14,10 +14,11 @@
     <% end  %>
   </ul>
   
-  <% if exchange.vendor_id == @user.id %>
-  <h2>Vendor View: </h2>
+  <% if exchange.vendor_id == current_user.id %>
+  <h2>Vendor View: </h2> 
   <p>Your currently scheduled exchange:</p>
   <ul>
+    <li>Requester: <%= exchange.requester_id %></li>
     <li>Station: <%= exchange.station %></li>
     <li>Date: <%= exchange.transform_date %></li>
     <li>Time: <%= exchange.time %></li>
@@ -26,7 +27,7 @@
       <% else %>
          <li>Your service: Open up a Dock</li>
       <% end %>
-    <% end  %>
+    <% end  %> 
   </ul>
   <% end %>
 

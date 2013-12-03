@@ -44,6 +44,7 @@ class ExchangesController < ApplicationController
 
   def show
     @exchange = Exchange.find(params[:id])
+    # @exchange.requester_id = current_user.id
     render :show
   end
 
@@ -54,14 +55,14 @@ class ExchangesController < ApplicationController
   end
 
   def confirm
-    # @exchange = Exchange.find(params[:id])
-     
-    # @exchange.update_attributes(params[:requester_id]) 
-    # binding.pry
+    @exchange = Exchange.find(params[:id])
+    @exchange.requester_id = current_user.id
+    @exchange.save!
     redirect_to user_path(current_user)
   end
 
   def claim
+    @exchanges = Exchange.all
     redirect_to user_path(current_user)
   end
     
