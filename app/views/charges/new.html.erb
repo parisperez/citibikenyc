@@ -1,0 +1,12 @@
+<%= form_tag charges_path do %>
+<form action="/charge" method="POST">
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="pk_test_lre2JS3OVUNRpIPcNMSxaoWS"
+    data-image="/square-image.png"
+    data-name="Demo Site"
+    data-description="2 widgets ($20.00)"
+    data-amount="2000">
+  </script>
+</form>
+<% end %>

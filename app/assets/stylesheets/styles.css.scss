@@ -47,6 +47,11 @@ nav.collapse .navbar-collapse .navbar-ex1-collapse {
     position: relative;
 }
 
+.panel-body {
+    font-size: 30px;
+    width: 100%;
+    text-align: center;
+}
 
 .container {
     margin-top: 50px !important;
@@ -61,6 +66,19 @@ nav.collapse .navbar-collapse .navbar-ex1-collapse {
     text-align: center;
 }
 
+.input_radio {
+    width: 20px;
+    height: 20px;
+    text-align: center;
+}
+
+.radio  {
+    margin: 0 auto;
+    text-align: center;
+    width: 20% !important;
+    height: 50px !important;
+}
+
 ul {
     font-family: oxygen;
     width: 100%;
@@ -72,7 +90,7 @@ li {
     font-family: oxygen;
     padding-right: 30px;
     color: #8B7D6B;
-    font-size: 50px;
+    font-size: 30px;
     font-weight: bold;
     display: block;
     text-decoration: none;
@@ -82,17 +100,17 @@ li {
 
 input    {
     text-align: center;
-    padding: 15px;
+    /*padding: 15px;*/
     border-radius: 10px;
-    font-size:36px;
+    font-size: 20px;
     margin-top: 20px;
     margin-bottom: 20px;
     margin-left: 0 auto;
     margin-right: 0 auto;
     width: 100%;
-    float: right;
+    /*float: right;*/
     border: solid 1px #8B7D6B;
-    height: 100px;
+    height: 120px;
     color: 2d2d2d2d;
     font-family: oxygen;
     -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
@@ -108,7 +126,7 @@ h5 {
     margin-top: 80px;
     margin-left: 0 auto;
     margin-right: 0 auto;
-    font-size: 50px;
+    font-size: 30px;
     color: #8B7D6B;
 
 }
@@ -136,12 +154,12 @@ h2 {
     margin-top: 80px;
     margin-left: 0 auto;
     margin-right: 0 auto;
-    font-size: 50px;
+    font-size: 30px;
     color: #8B7D6B;
 }
 
 h3 {
-    font-size: 40px;
+    font-size: 30px;
     color: #CBCAB6;
     line-height: 30px;
     font-family: serif;
@@ -193,7 +211,7 @@ h6 {
     margin-bottom: 2px;
     margin-left: 0 auto;
     margin-right: 0 auto;
-    font-size: 50px;
+    font-size: 30px;
     color: #8B7D6B;
 }
 
@@ -203,7 +221,7 @@ h7 {
     margin-top: 110px;
     margin-left: 0 auto;
     margin-right: 0 auto;
-    font-size: 40px;
+    font-size: 30px;
     color: #8B7D6B;
 }
 
@@ -227,7 +245,7 @@ h7 {
 }
 
 .saved_destination {
-    font-size: 28px;
+    font-size: 30px;
     height: 100px;
     font-family: oxygen;
     color: #4E2F2F;
@@ -250,7 +268,26 @@ h7 {
     margin-top: 10px; 
     background: -webkit-gradient(linear, bottom, left 175px, from(#CCCCCC), to(#EEEEEE));
     background: -moz-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
-    line-height: 30px;
+    line-height: 15px;
+    font-weight: bold;
+    color: gray;
+    text-decoration: none;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    height: 100%;
+    margin-left: 0 auto;
+    margin-right: 0 auto;
+    text-align: center;
+
+/*    display: inline-block;
+    padding-top: 10px;
+    margin-top: 10px; 
+    background: -webkit-gradient(linear, bottom, left 175px, from(#CCCCCC), to(#EEEEEE));
+    background: -moz-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
+    line-height: 20px;
     font-weight: bold;
     color: #09C;
     text-decoration: none;
@@ -262,8 +299,12 @@ h7 {
     height: 100%;
     margin-left: 0 auto;
     margin-right: 0 auto;
-    text-align: center;
+    text-align: center;*/
     }
+
+input.form-control {
+    width: 70% !important;
+}
 
 img {
     border: solid 3px #FF0000;
@@ -324,7 +365,7 @@ input    {
     text-align: center;
     padding: 3px;
     border-radius: 10px;
-    font-size: 20px;
+    font-size: 16px;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-left: 0 auto;
@@ -339,7 +380,6 @@ input    {
     -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
 }
-
 
 
  .form {

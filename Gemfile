@@ -15,6 +15,7 @@ gem "citibikenyc", "~> 0.0.1"
 gem "geocoder", "~> 1.1.8"
 gem 'rails_12factor', group: :production
 gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass', branch: '3'
+gem 'stripe'
 
 group :doc do
   gem 'sdoc', require: false

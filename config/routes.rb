@@ -13,6 +13,8 @@ Citibike::Application.routes.draw do
         post 'favorite'
       end  
   end
+
+  resources :charges
   
   get 'account' => 'welcome#account'
   root 'welcome#index'

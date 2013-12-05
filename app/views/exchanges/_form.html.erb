@@ -1,7 +1,11 @@
 <h6>Schedule an exchange:</h6>
+
+ <div class="well">
+
 <div class="panel-body">
   <%= form_for [@current_user, @exchange], :action => :create, :html => {:class => 'form',:role => 'form'} do |f| %>
 
+ 
   <div class="form group">
     <%= f.label :station %>
     <%= f.text_field :station %>
@@ -38,8 +42,9 @@
 
    <br>
    <br>
-  <%= f.submit class: "btn btn-primary" %>
+  <%= f.submit nil, class: "btn btn-primary" %>
    <% end %> 
 
+</div>
 </div>
 
