@@ -22,8 +22,7 @@ class UsersController < ApplicationController
       @user.save!
     end
     if @user.save
-      redirect_to user_path(@user) 
-     binding.pry  
+      redirect_to user_path(@user)  
     else
       render :new
     end

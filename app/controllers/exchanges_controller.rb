@@ -2,7 +2,6 @@ class ExchangesController < ApplicationController
 
   def new
     @exchange = Exchange.new
-    # binding.pry
     render :new
   end
 
