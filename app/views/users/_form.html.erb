@@ -14,7 +14,7 @@
     <%= f.password_field :password, :class => 'field' %></br>
     <%= f.label :password_confirmation %></br>
     <%= f.password_field :password_confirmation, :class => 'field' %></br>
-    <%= f.collection_select :role, User::ROLES, :to_s, :humanize %>
+     <!-- f.collection_select :role, User::ROLES, :to_s, :humanize %> -->
     <%= f.submit 'Save', :class => 'new_user'%>
   <% end %>
 </ul>  

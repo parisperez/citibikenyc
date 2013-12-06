@@ -10,7 +10,7 @@
     <% else %>
     <li>Need a Dock</li>
     <% end %>
-    <% if @exchange.vendor_id == nil %>
+    <% if @exchange.vendor_id == nil and current_user.id == @exchange.requester_id %>
     <li><%= link_to "Delete", exchange_path(@exchange), :method => :delete %> </li>
     <% end %>
     <!-- need cancel button -->
