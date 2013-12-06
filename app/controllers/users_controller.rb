@@ -16,10 +16,14 @@ class UsersController < ApplicationController
     # can't do a redirect or else we'll lose our new object. must use render: new
     # need this when you're grabbing user input to create a new model.
     @user = User.new(user_params)
-    # @user = User.find(params[:id])
-
+    choice = params["role"]    
+    if choice == "vendor"
+      @user.role = "vendor"
+      @user.save!
+    end
     if @user.save
       redirect_to user_path(@user) 
+     binding.pry  
     else
       render :new
     end
@@ -49,7 +53,7 @@ private
 
 # this is the white list engineering
   def user_params
-    params.require(:user).permit(:username, :email, :password, :password_confirmation)
+    params.require(:user).permit(:username, :email, :password, :password_confirmation, :role)
   end
 
   def logged_in?

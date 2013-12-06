@@ -14,8 +14,17 @@
     <%= f.password_field :password, :class => 'field' %></br>
     <%= f.label :password_confirmation %></br>
     <%= f.password_field :password_confirmation, :class => 'field' %></br>
+      <div class="radio">
+      <label>
+         <%= "I want to be an exchange buddy" %> 
+
+         <input type="radio" class="input_radio" name= "role" value= <%= @user.role = "vendor" %>>
+
+      </label>
+     </div>
      <!-- f.collection_select :role, User::ROLES, :to_s, :humanize %> -->
     <%= f.submit 'Save', :class => 'new_user'%>
+
   <% end %>
 </ul>  
 </div>
