@@ -1,9 +1,10 @@
 Citibike::Application.routes.draw do
   resources :searches, only: [:new, :create, :index]
-  resources :exchanges do
+  resources :exchanges  do
     member do
       put 'claim'
       put 'confirm'
+
     end
   end
   

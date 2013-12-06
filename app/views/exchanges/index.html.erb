@@ -1,8 +1,8 @@
 <div class="well">
   <h2>All Exchanges:</h2>
   <% @exchanges.each do |exchange| %>
+  <% if exchange.vendor_id == nil %>
   <ul>
-    <li>ID: <%= exchange.id %></li>
     <li>Requester: <%= exchange.requester_id %></li>
     <li>Station: <%= exchange.station %></li>
     <li>Date: <%= exchange.date %></li>
@@ -13,6 +13,7 @@
     <%= button_to "select", exchange_path(exchange), :method => :get %>
     <% end %>
   </ul>
+  <% end %>
   <% end %>
 
 </div>

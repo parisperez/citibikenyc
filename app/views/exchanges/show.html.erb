@@ -1,9 +1,6 @@
 <div class="well">
   <h4></h4>
   <ul>
-    <li>Id: <%= @exchange.id %></li>
-    <li>Requester: <%= @exchange.requester_id %></li>
-    <li>Vendor: <%= @exchange.vendor_id %></li>
     <li>Station: <%= @exchange.station %></li>
     <li>Date: <%= @exchange.transform_date %></li>
     <li>Time: <%= @exchange.time %></li>
@@ -13,6 +10,10 @@
     <% else %>
     <li>Need a Dock</li>
     <% end %>
+    <% if @exchange.vendor_id == nil %>
+    <li><%= link_to "Delete", exchange_path(@exchange), :method => :delete %> </li>
+    <% end %>
+    <!-- need cancel button -->
     
     <% if @exchange.requester_id == nil %> 
     <%= button_to "confirm", confirm_exchange_path, :id => @exchange.id, :method => :put %>

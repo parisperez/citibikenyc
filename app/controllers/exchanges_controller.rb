@@ -64,8 +64,19 @@ class ExchangesController < ApplicationController
   def claim
     @exchange = Exchange.find(params[:id])
     @exchange.vendor_id = current_user.id
+    current_user.role = "vendor"
+    current_user.save!
     @exchange.save!
     redirect_to user_path(current_user)
+  end
+
+  def destroy
+   @exchange = Exchange.find(params[:id])
+    if @exchange.destroy
+      redirect_to user_path(current_user)
+    else 
+      render :new
+    end
   end
     
   private
