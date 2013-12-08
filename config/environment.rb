@@ -3,7 +3,6 @@ require File.expand_path('../application', __FILE__)
 
 # Initialize the Rails application.
 Citibike::Application.initialize! do
-config.gem "cancan"
-   
+  config.gem "cancan"
 end
 

@@ -1,13 +1,14 @@
 Citibike::Application.routes.draw do
+
+  get '/rate' => 'rater#create', :as => 'rate'
   resources :searches, only: [:new, :create, :index]
   resources :exchanges  do
     member do
       put 'claim'
       put 'confirm'
-
     end
   end
-  
+
   resources :users do
     resources :favorites
       member do

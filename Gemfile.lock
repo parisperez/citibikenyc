@@ -68,6 +68,7 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
+    letsrate (1.0.8)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -157,6 +158,7 @@ DEPENDENCIES
   geocoder (~> 1.1.8)
   jbuilder (~> 1.2)
   jquery-rails
+  letsrate (~> 1.0.8)
   multi_json (~> 1.7.7)
   pg
   pry-rails
