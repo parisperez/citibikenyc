@@ -49,7 +49,12 @@
   <% end %>
 </div>
 
-Rating : <%= rating_for @user%>
+Rating: <%= rating_for @user%>
+Leave a comment:
+<%= render :partial => 'comments/form', :locals => {:commentable => @user} %>
+<ul>
+  
+
 
 
 

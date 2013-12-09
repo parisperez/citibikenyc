@@ -18,6 +18,9 @@ gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass', branch: '3'
 gem 'stripe'
 gem 'cancan'
 gem "letsrate", "~> 1.0.8"
+gem 'acts_as_commentable'
+gem "appointments", "~> 1.3.3"
+gem 'jquery-ui-rails'
 
 group :doc do
   gem 'sdoc', require: false
