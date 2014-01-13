@@ -1,7 +1,16 @@
+<h2>User view:</h2>
+
+<h2>Your Saved Destinations:</h2>
+  <ul>
+    <% @user.favorites.each do |favorite| %>
+    <%= form_tag searches_path, :method => :post do %>
+    <li><%= submit_tag "#{favorite.address}", :class => 'btn btn-default', :name => :address %></li>
+    <% end %>
+    <% end %>
+  </ul>
 <% @exchanges.each do |exchange| %>
   <% if exchange.requester_id == current_user.id %>
-  <h2>User view:</h2>
-  <p>Your currently scheduled exchange:</p>
+  <h2>Your currently scheduled exchange:</h2>
   <ul>
     <li>Station: <%= exchange.station %></li>
     <li>Date: <%= exchange.transform_date %></li>
@@ -31,28 +40,14 @@
   </ul>
   <% end %>
 
-<h2>Your Saved Destinations:</h2>
-  <ul>
-    <% @user.favorites.each do |favorite| %>
-    <%= form_tag searches_path, :method => :post do %>
-    <li><%= submit_tag "#{favorite.address}", :class => 'saved_destination', :name => :address %></li>
-    <% end %>
-    <% end %>
-  </ul>
-
-
 <div class="new_search">
-  <h6><%= link_to "New Search", new_search_path %> </h6>
-  <h6><%= link_to "Schedule an Exchange", new_exchange_path %> </h6>
+  <h2><%= link_to "New Search", new_search_path %> </h2>
+  <h2><%= link_to "Schedule an Exchange", new_exchange_path %> </h2>
   <% if current_user.role == "vendor" %>
-  <h6> <%= link_to "All Exchanges", exchanges_path %> </h6>
+  <h2> <%= link_to "All Exchanges", exchanges_path %> </h2>
   <% end %>
 </div>
 
-Rating: <%= rating_for @user%>
-Leave a comment:
-<%= render :partial => 'comments/form', :locals => {:commentable => @user} %>
-<ul>
   
 
 

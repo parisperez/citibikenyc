@@ -49,7 +49,6 @@ class ExchangesController < ApplicationController
 
   def index
     @exchanges = Exchange.all
-
     render :index
   end
 

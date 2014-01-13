@@ -22,6 +22,7 @@ gem 'acts_as_commentable'
 gem "appointments", "~> 1.3.3"
 gem 'jquery-ui-rails'
 
+
 group :doc do
   gem 'sdoc', require: false
 end

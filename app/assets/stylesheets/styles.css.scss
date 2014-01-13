@@ -3,7 +3,6 @@ $baseFontFamily: Oxygen;
 
 body {
     font-family: sans-serif;
-/*    padding-top: 60px;*/
     padding-bottom: 60px;
     width: 100% !important;
     overflow-x: hidden !important;
@@ -15,7 +14,6 @@ body {
     .navbar-nav > li > a {
     text-transform: uppercase; 
     color: #FF0000 !important;
-    /*background: none repeat scroll 0% 0% #000000 !important;*/
     display: block !important;
     padding: 1.3rem 2rem;
     text-decoration: none !important;   
@@ -29,7 +27,6 @@ body {
     list-style: none;
     padding: 1.3rem 2rem;
     margin-top: -0.8px;
-
 }
 
 .nav ul > li > a:link, a:hover {
@@ -48,9 +45,10 @@ nav.collapse .navbar-collapse .navbar-ex1-collapse {
 }
 
 .panel-body {
-    font-size: 30px;
+    font-size: 20px;
     width: 100%;
     text-align: center;
+    color: #8B7D6B;
 }
 
 .container {
@@ -90,32 +88,12 @@ li {
     font-family: oxygen;
     padding-right: 30px;
     color: #8B7D6B;
-    font-size: 30px;
+    font-size: 16px;
     font-weight: bold;
     display: block;
     text-decoration: none;
     margin-left: 0 auto;
     margin-right: 0 auto;
-}
-
-input    {
-    text-align: center;
-    /*padding: 15px;*/
-    border-radius: 10px;
-    font-size: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-left: 0 auto;
-    margin-right: 0 auto;
-    width: 100%;
-    /*float: right;*/
-    border: solid 1px #8B7D6B;
-    height: 120px;
-    color: 2d2d2d2d;
-    font-family: oxygen;
-    -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-    -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
 }
 
 h5 {
@@ -128,7 +106,6 @@ h5 {
     margin-right: 0 auto;
     font-size: 30px;
     color: #8B7D6B;
-
 }
 
 h1 {
@@ -149,12 +126,12 @@ h1 {
 h2 {
     text-align: center;
     font-family: oxygen;
-    padding-top: 50px;
-    padding-bottom: 50px;
-    margin-top: 80px;
+/*    padding-top: 50px;
+    padding-bottom: 50px;*/
+/*    margin-top: 80px;*/
     margin-left: 0 auto;
     margin-right: 0 auto;
-    font-size: 30px;
+    font-size: 20px;
     color: #8B7D6B;
 }
 
@@ -192,14 +169,12 @@ h3 {
     margin-top: 20px !important;
     padding-top: 30px;
     margin-bottom: 70px;
-    
 }
 
 .saved {
     margin-top: -10px;
     /*border: solid 3px red;*/
     padding-bottom: 80px;
-
 }
 
 h6 {
@@ -211,7 +186,7 @@ h6 {
     margin-bottom: 2px;
     margin-left: 0 auto;
     margin-right: 0 auto;
-    font-size: 30px;
+    font-size: 20px;
     color: #8B7D6B;
 }
 
@@ -233,10 +208,6 @@ h7 {
     font-family: arial;
     color: #8B7D6B; 
 }
-.account {
-    line-height: 150px;
-    margin-top: 180px; 
-}
 
 .form_user {
     text-align: center;
@@ -253,71 +224,30 @@ h7 {
     background-color: D3D3D3;
 }
 
-.new_user, .login, .go {
-    height: 100px;
-    font-family: oxygen;
-    color: #4E2F2F;
-    font-weight: bold;
-    background-color: D3D3D3;
-}
-
-/*FORMS STYLE*/
- .form {
-    display: inline-block;
-    padding-top: 10px;
-    margin-top: 10px; 
-    background: -webkit-gradient(linear, bottom, left 175px, from(#CCCCCC), to(#EEEEEE));
-    background: -moz-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
-    line-height: 15px;
-    font-weight: bold;
-    color: gray;
-    text-decoration: none;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
-    padding-bottom: 10px;
-    width: 100%;
-    height: 100%;
-    margin-left: 0 auto;
-    margin-right: 0 auto;
-    text-align: center;
-
-/*    display: inline-block;
-    padding-top: 10px;
-    margin-top: 10px; 
-    background: -webkit-gradient(linear, bottom, left 175px, from(#CCCCCC), to(#EEEEEE));
-    background: -moz-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
-    line-height: 20px;
-    font-weight: bold;
-    color: #09C;
-    text-decoration: none;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
-    padding-bottom: 20px;
-    width: 100%;
-    height: 100%;
-    margin-left: 0 auto;
-    margin-right: 0 auto;
-    text-align: center;*/
-    }
-
-input.form-control {
-    width: 70% !important;
-}
-
 img {
     border: solid 3px #FF0000;
     margin-top: 20px;
     margin-left: 0 auto;
     margin-right: 0 auto;
     text-decoration: none;
-/*    width: 30;
-    height: 30;*/
 }
 
 .twitter li {
     font-size: 20px;
+}
+
+#search-body, #new-exchange {
+    width: 50% !important;
+    text-align: center !important;
+    margin: 0 auto;
+}
+
+.btn {
+    color: #8B7D6B;
+}
+
+.form-control {
+    color: #8B7D6B;
 }
 
 @media (max-width: 480px) {
@@ -361,48 +291,6 @@ div.greeting {
   text-align: center;
 }  
 
-input    {
-    text-align: center;
-    padding: 3px;
-    border-radius: 10px;
-    font-size: 16px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 0 auto;
-    margin-right: 0 auto;
-    width: 100%;
-    float: right;
-    border: solid 1px #8B7D6B;
-    height: 70px;
-    color: 2d2d2d2d;
-    font-family: oxygen;
-    -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-    -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-}
-
-
- .form {
-    /*display: inline-block;*/
-    padding-top: 5px;
-    margin-top: 5px; 
-    background: -webkit-gradient(linear, bottom, left 175px, from(#CCCCCC), to(#EEEEEE));
-    background: -moz-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
-    line-height: 15px;
-    font-weight: bold;
-    color: #09C;
-    text-decoration: none;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
-    padding-bottom: 10px;
-    width: 90%;
-    height: 100%;
-    margin-left: 0 auto;
-    margin-right: 0 auto;
-    text-align: center;
-    }
-
 .saved_destination {
     text-align: center;
     font-size: 16px;
@@ -426,7 +314,6 @@ input    {
     background-color: D3D3D3;
 }
 
-
 h5 {
     text-align: center;
     font-family: oxygen;
@@ -437,7 +324,6 @@ h5 {
     margin-right: 0 auto;
     font-size: 20px;
     color: #8B7D6B;
-
 }
 
 h1 {
@@ -458,9 +344,9 @@ h1 {
 h2 {
     text-align: center;
     font-family: oxygen;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    margin-top: 30px;
+/*    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 10px;*/
     margin-left: 0 auto;
     margin-right: 0 auto;
     font-size: 20px;
@@ -548,13 +434,6 @@ h7 {
 .account {
     line-height: 70px;
     margin-top: 30px; 
-}
-
-.field {
-    text-align: center;   
-    width: 100%;
-    margin: 0 auto;
-    line-height: 10px;
 }
 
 } 

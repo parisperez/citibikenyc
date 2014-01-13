@@ -1,4 +1,5 @@
-<div class="form">
+
+  <div class="panel-body">
   <% unless @user.errors.none? %>
     <% @user.errors.full_messages.each do |msg| %> 
     <%= msg %>
@@ -6,14 +7,25 @@
   <% end %>
 <ul>
   <%= form_for @user do |f| %>
+  <div class="form-group">
     <%= f.label :username %></br>
-    <%= f.text_field :username, :class => 'field' %></br>
+    <%= f.text_field :username, class: "form-control"%></br>
+  </div>
+
+  <div class="form-group">  
     <%= f.label :email %></br>
-    <%= f.email_field :email, :class => 'field' %></br>
+    <%= f.email_field :email, class: "form-control" %></br>
+  </div>
+
+  <div class="form-group">
     <%= f.label :password %></br>
-    <%= f.password_field :password, :class => 'field' %></br>
+    <%= f.password_field :password, class: "form-control" %></br>
+  </div>
+
+  <div class="form-group">  
     <%= f.label :password_confirmation %></br>
-    <%= f.password_field :password_confirmation, :class => 'field' %></br>
+    <%= f.password_field :password_confirmation, class: "form-control" %></br>
+  </div>  
       <div class="radio">
       <label>
          <%= "I want to be an exchange buddy" %> 
@@ -23,7 +35,7 @@
       </label>
      </div>
      <!-- f.collection_select :role, User::ROLES, :to_s, :humanize %> -->
-    <%= f.submit 'Save', :class => 'new_user'%>
+    <%= f.submit 'Save', :class => 'btn btn-default'%>
 
   <% end %>
 </ul>  

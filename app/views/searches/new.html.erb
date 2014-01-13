@@ -1,18 +1,17 @@
 <div class="container">
-  <div class="well">
-    <div class="search_title">
-      <h7>Search for the nearest available bike or dock:</h7>  
+    <div class="panel panel-default">
+      <div class="panel-heading">  
+        <h7>Search for the nearest available bike or dock:</h7>  
+      </div>
+         <div class="panel-body" id="search-body">
+            <%= form_tag searches_path, :method => :post do %>  
+            <%= text_field_tag :address, params[:address], placeholder: 'street city and zip...', class: "form-control" %>  
+            <%= submit_tag "Go", :class => 'btn btn-default' %>   
+            <% end %>  
+         </div> 
     </div>
-     <div class="form">
-        <%= form_tag searches_path, :method => :post do %>  
-        <%= text_field_tag :address, params[:address], placeholder: 'street city and zip...'%>  
-        <%= submit_tag "Go", :class => 'go' %>   
-        <% end %>  
-     </div> 
-</div>
 
-  <div class="saved">
-    <h6><%= link_to "Go to Saved Destinations", user_path(current_user) %></h6>
-  </div>
-
+    <div class="saved">
+      <h6><%= link_to "Go to Saved Destinations", user_path(current_user) %></h6>
+    </div>
 </div>

@@ -1,9 +1,12 @@
 <div class="well">
   <h2>All Exchanges:</h2>
+  
   <% @exchanges.each do |exchange| %>
-  <% if exchange.vendor_id == nil %>
   <ul>
+  <% @requester = User.find_by(id: [exchange.requester_id.to_i]) %>
+  <% if exchange.vendor_id == nil %>
     <li>Requester: <%= exchange.requester_id %></li>
+    <li>Requester name: <%= @requester.username %> </li>
     <li>Station: <%= exchange.station %></li>
     <li>Date: <%= exchange.date %></li>
     <li>Time: <%= exchange.time %></li>
@@ -11,7 +14,7 @@
     <li>Is_bike: <%= exchange.is_bike %></li>
     <% unless exchange.requester_id == nil %>
     <%= button_to "select", exchange_path(exchange), :method => :get %>
-    <% end %>
+    <% end %>   
   </ul>
   <% end %>
   <% end %>

@@ -1,11 +1,19 @@
-<div class="form">
-  <ul>
-    <%= form_tag session_path, :method => :post do %>
-    <%= label_tag :email %></br>
-    <%= text_field_tag :email %></br>
-    <%= label_tag :password %></br>
-    <%= password_field_tag :password %></br>
-    <%= submit_tag "Login", :class => 'login'%>
-    <% end %>
-  </ul>
+  <div class="well">
+    <div class="panel-body">
+    <ul>
+      <%= form_tag session_path, :method => :post, :class => 'form_control'  do %>
+
+    <div class="form-group">
+      <%= label_tag :email %></br>
+      <%= text_field_tag :email %></br>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag :password %></br>
+      <%= password_field_tag :password %></br>
+    </div>  
+      <%= submit_tag "Login", class: "btn btn-default" %>
+      <% end %>
+    </ul>
+  </div>
 </div>
