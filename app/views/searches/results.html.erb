@@ -31,7 +31,7 @@
     <div class="destination">
         <%= form_tag user_favorites_path(current_user), :method => :post do %>
         <%= hidden_field_tag "favorite[address]", params[:address]%>
-        <%= submit_tag "Save This Destination", :class => 'saved_destination', :name => :address %> 
+        <%= submit_tag "Save This Destination", :class => 'btn btn-default', :name => :address %> 
         <% end %>
     </div>
 

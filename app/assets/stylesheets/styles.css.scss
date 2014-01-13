@@ -44,6 +44,10 @@ nav.collapse .navbar-collapse .navbar-ex1-collapse {
     position: relative;
 }
 
+.navbar-inverse, .navbar, .navbar-default{
+    border-radius: 0;
+}
+
 .panel-body {
     font-size: 20px;
     width: 100%;
@@ -248,6 +252,10 @@ img {
 
 .form-control {
     color: #8B7D6B;
+}
+
+#new-search {
+    margin-bottom: 10px;
 }
 
 @media (max-width: 480px) {

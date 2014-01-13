@@ -5,7 +5,7 @@
       </div>
          <div class="panel-body" id="search-body">
             <%= form_tag searches_path, :method => :post do %>  
-            <%= text_field_tag :address, params[:address], placeholder: 'street city and zip...', class: "form-control" %>  
+            <%= text_field_tag :address, params[:address], placeholder: 'street city and zip...', class: "form-control", id: "new-search" %>  
             <%= submit_tag "Go", :class => 'btn btn-default' %>   
             <% end %>  
          </div> 
