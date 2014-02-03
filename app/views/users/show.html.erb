@@ -4,7 +4,7 @@
   <ul>
     <% @user.favorites.each do |favorite| %>
     <%= form_tag searches_path, :method => :post do %>
-    <li><%= submit_tag "#{favorite.address}", :class => 'btn btn-default', :name => :address %></li>
+    <li class="favorites"><%= submit_tag "#{favorite.address}", :class => 'btn btn-default', :name => :address %></li>
     <% end %>
     <% end %>
   </ul>
