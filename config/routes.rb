@@ -1,4 +1,6 @@
 Citibike::Application.routes.draw do
+  resources :sales
+
   resources :appointments
   get '/comment' => 'comment#create', :as => 'comments'
   get '/rate' => 'rater#create', :as => 'rate'

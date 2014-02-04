@@ -5,4 +5,3 @@ require File.expand_path('../application', __FILE__)
 Citibike::Application.initialize! do
   config.gem "cancan"
 end
-

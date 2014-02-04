@@ -42,12 +42,20 @@ ActiveRecord::Schema.define(version: 20131208230535567) do
     t.boolean  "is_bike"
     t.date     "date"
     t.time     "time"
-    t.decimal  "price",        default: 5.0
+    t.decimal  "price",             default: 5.0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "requester_id"
     t.integer  "vendor_id"
     t.string   "station"
+    t.string   "name"
+    t.string   "permalink"
+    t.text     "description"
+    t.integer  "user_id"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
   end
 
   create_table "favorites", force: true do |t|
@@ -81,6 +89,16 @@ ActiveRecord::Schema.define(version: 20131208230535567) do
   end
 
   add_index "rating_caches", ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type", using: :btree
+
+  create_table "sales", force: true do |t|
+    t.string   "email"
+    t.string   "guid"
+    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sales", ["product_id"], name: "index_sales_on_product_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "username",        null: false

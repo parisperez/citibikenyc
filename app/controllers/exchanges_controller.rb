@@ -14,7 +14,7 @@ class ExchangesController < ApplicationController
   def create
     @exchanges = Exchange.all
     @exchange = Exchange.new(exchange_params)  
-
+    @exchange.user = current_user
     choice = params[":is_bike"]    
     if choice == "true"
       @exchange.is_bike = true
@@ -35,10 +35,29 @@ class ExchangesController < ApplicationController
       end 
       @exchange.station = @station["label"]
       @exchange.save  
-      redirect_to exchange_path(@exchange)
-    else
-      render :new  
+      # redirect_to exchange_path(@exchange)
+    # else
+    #   render :new  
     end
+    respond_to do |format|
+      if @exchange.save
+        format.html {
+        redirect_to @exchange,
+        notice: 'Exchange was successfully created.'
+        }
+        format.json {
+        render json: @exchange,
+        status: :created,
+        location: @exchange
+        }
+      else
+        format.html { render 'new' }
+        format.json {
+        render json: @exchange.errors,
+        status: :unprocessable_entity
+        }
+      end
+    end   
   end
 
   def show
@@ -80,7 +99,7 @@ class ExchangesController < ApplicationController
   private
 
   def exchange_params
-      params.require(:exchange).permit(:is_bike, :date, :time, :price, :station)
+      params.require(:exchange).permit(:description, :name, :permalink, :price, :file, :is_bike, :date, :time, :price, :station)
   end
 
 end

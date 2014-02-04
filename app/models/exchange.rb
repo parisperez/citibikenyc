@@ -1,5 +1,7 @@
 class Exchange < ActiveRecord::Base
   validates :station, :date, :time, :price, presence: true
+  has_attached_file :file
+  belongs_to :user
   belongs_to :requester,
     :class_name => 'User',
     :primary_key => 'user_id',
@@ -8,6 +10,11 @@ class Exchange < ActiveRecord::Base
     :class_name => 'User',
     :primary_key => 'user_id',
     :foreign_key => 'vendor_id'   
+    
+  has_many :sales
+  validates_numericality_of :price,
+    greater_than: 49,
+    message: "must be at least 50 cents"
 
   def transform_date
     d = Date.parse(self.date.to_s)
