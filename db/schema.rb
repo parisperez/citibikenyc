@@ -96,6 +96,12 @@ ActiveRecord::Schema.define(version: 20131208230535567) do
     t.integer  "exchange_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "state"
+    t.string   "stripe_id"
+    t.string   "stripe_token"
+    t.date     "card_expiration"
+    t.text     "error"
+    t.integer  "fee_amount"
   end
 
   add_index "sales", ["exchange_id"], name: "index_sales_on_exchange_id", using: :btree
@@ -108,5 +114,17 @@ ActiveRecord::Schema.define(version: 20131208230535567) do
     t.datetime "updated_at"
     t.string   "role"
   end
+
+  create_table "versions", force: true do |t|
+    t.string   "item_type",      null: false
+    t.integer  "item_id",        null: false
+    t.string   "event",          null: false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.datetime "created_at"
+    t.text     "object_changes"
+  end
+
+  add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
 
 end

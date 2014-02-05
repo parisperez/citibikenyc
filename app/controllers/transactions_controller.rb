@@ -22,25 +22,20 @@ class TransactionsController < ApplicationController
   end
 
   def create
-    exchange = Exchange.find_by!(
+    @exchange = Exchange.find_by!(
       id: params[:id]
       )
-    token = params[:stripeToken]
-    begin
-      charge = Stripe::Charge.create(
-        amount: exchange.price,
-        currency: "usd",
-        card: token, description: params[:email]
-        )
-      @sale = exchange.sales.create!(
-        email: params[:email]
-        )
-      redirect_to pickup_url(guid: @sale.guid)
-    rescue Stripe::CardError => e
-    # The card has been declined or
-    # some other error has occurred
-    @error = e
-    render :new
+    sale = @exchange.sales.create(
+      amount: @exchange.price,
+      email: params[:email],
+      stripe_token: params[:stripeToken]
+      )
+    sale.process!
+    if sale.finished?
+      redirect_to pickup_url(guid: sale.guid)
+    else
+      flash.now[:alert] = sale.error
+      render :new
     end
   end
   
