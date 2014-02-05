@@ -34,10 +34,7 @@ class ExchangesController < ApplicationController
         Math.hypot( distance_x, distance_y )    
       end 
       @exchange.station = @station["label"]
-      @exchange.save  
-      # redirect_to exchange_path(@exchange)
-    # else
-    #   render :new  
+      @exchange.save   
     end
     respond_to do |format|
       if @exchange.save
@@ -58,11 +55,12 @@ class ExchangesController < ApplicationController
         }
       end
     end   
+    # binding.pry
   end
 
   def show
     @exchange = Exchange.find(params[:id])
-    # @exchange.requester_id = current_user.id
+    # binding.pry
     render :show
   end
 

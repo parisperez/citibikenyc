@@ -93,12 +93,12 @@ ActiveRecord::Schema.define(version: 20131208230535567) do
   create_table "sales", force: true do |t|
     t.string   "email"
     t.string   "guid"
-    t.integer  "product_id"
+    t.integer  "exchange_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "sales", ["product_id"], name: "index_sales_on_product_id", using: :btree
+  add_index "sales", ["exchange_id"], name: "index_sales_on_exchange_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "username",        null: false

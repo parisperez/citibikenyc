@@ -5,7 +5,7 @@ class TransactionsController < ApplicationController
 
   def new
     @exchange = Exchange.find_by!(
-      permalink: params[:permalink]
+      id: params[:id]
       )
   end
 
@@ -16,7 +16,7 @@ class TransactionsController < ApplicationController
 
   def create
     exchange = Exchange.find_by!(
-      permalink: params[:permalink]
+      id: params[:id]
       )
     token = params[:stripeToken]
     begin
@@ -35,6 +35,7 @@ class TransactionsController < ApplicationController
     @error = e
     render :new
     end
+    binding.pry
   end
   
   def download
