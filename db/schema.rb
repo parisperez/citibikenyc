@@ -42,7 +42,6 @@ ActiveRecord::Schema.define(version: 20131208230535567) do
     t.boolean  "is_bike"
     t.date     "date"
     t.time     "time"
-    t.decimal  "price",             default: 5.0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "requester_id"
@@ -56,6 +55,7 @@ ActiveRecord::Schema.define(version: 20131208230535567) do
     t.string   "file_content_type"
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
+    t.integer  "price"
   end
 
   create_table "favorites", force: true do |t|

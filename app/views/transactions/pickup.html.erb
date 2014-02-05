@@ -1,0 +1,4 @@
+<h1>Download <%= @exchange.name %></h1>
+<p>Thanks for buying "<%= @exchange.name %>". You can download your purchase by clicking the link below.
+</p>
+<p><%= link_to "Download", download_url(guid: @sale.guid) %></p>

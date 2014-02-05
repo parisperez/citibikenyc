@@ -24,4 +24,10 @@ Citibike::Application.routes.draw do
   get 'account' => 'welcome#account'
   root 'welcome#index'
   resource :session, only: [:destroy, :create, :new]
+
+  get '/buy/:permalink', to: 'transactions#new', as: :show_buy
+  post '/buy/:permalink', to: 'transactions#create', as: :buy
+  get '/pickup/:guid', to: 'transactions#pickup', as: :pickup
+  get '/download/:guid', to: 'transactions#download', as: :download
+
 end

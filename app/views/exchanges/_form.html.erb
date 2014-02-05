@@ -4,7 +4,7 @@
   </div>
 
 <div class="panel-body" id="new-exchange">
-  <%= form_for [@current_user, @exchange], :action => :create do |f| %>
+  <%= form_for [@exchange], :action => :create do |f| %>
 
  
   <div class="form-group">
@@ -24,7 +24,7 @@
 
   <div class="form-group">
     <%= f.label :price %></br> 
-    <%= f.number_field :price, class: "form-control" %></br> 
+    <%= f.text_field :price, class: "form-control" %></br> 
   </div> 
 
 <div class="form-group">
