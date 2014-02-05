@@ -9,8 +9,6 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'multi_json', '~> 1.7.7'
-gem 'pry-rails', group: [:development, :test]
-gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'citibikenyc', '~> 0.0.1'
 gem 'geocoder', '~> 1.1.8'
 gem 'rails_12factor', group: :production
@@ -25,6 +23,13 @@ gem 'devise', '~> 3.0.0.rc'
 gem 'paperclip', '~> 3.5.1'
 gem 'aws-sdk'
 gem 'httparty'
+gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'brakeman'
+
+group :development do
+  gem 'rails_best_practices'
+  gem 'pry-rails', group: [:development, :test]
+end
 
 group :doc do
   gem 'sdoc', require: false
