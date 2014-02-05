@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(version: 20131208230535567) do
     t.date     "card_expiration"
     t.text     "error"
     t.integer  "fee_amount"
+    t.integer  "amount"
   end
 
   add_index "sales", ["exchange_id"], name: "index_sales_on_exchange_id", using: :btree
