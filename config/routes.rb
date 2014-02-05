@@ -6,7 +6,6 @@ Citibike::Application.routes.draw do
 
   resources :sales
 
-  resources :appointments
   get '/comment' => 'comment#create', :as => 'comments'
   get '/rate' => 'rater#create', :as => 'rate'
   resources :searches, only: [:new, :create, :index]
@@ -23,8 +22,6 @@ Citibike::Application.routes.draw do
         post 'favorite'
       end  
   end
-
-  resources :charges
   
   get 'account' => 'welcome#account'
   root 'welcome#index'
