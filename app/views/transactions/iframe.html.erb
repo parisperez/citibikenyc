@@ -1,2 +1,3 @@
-
+<h1><%= @exchange.station %></h1>
+<p>Price: <%= formatted_price(@exchange.price) %></p>
 <%= render 'form', id: @exchange.id, sale: @sale, price: formatted_price(@exchange.price) %>

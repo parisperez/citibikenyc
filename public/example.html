@@ -1,0 +1,24 @@
+<html>
+<head>
+</head>
+<body>
+  <h1>Example iframe</h1>
+  <button class="btn btn-primary" id="openBtn">Buy</button>
+  <div id="paymentModal" class="modal hide fade" role="dialog">
+    <div class="modal-body">
+      <iframe src="" style="zoom:0.6" width="99.6%" height="550" frameborder="0"></iframe>
+    </div>
+  </div>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+  <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+var frameSrc = "/buy/design-for-failure"; // You'll want to customize this.
+$("#openBtn").click(function() {
+  $("#paymentModal").on("show", function() {
+    $('iframe').attr('src', frameSrc);
+  });
+  $("#paymentModal").modal({show: true});
+});
+</script>
+</body>
+</html>

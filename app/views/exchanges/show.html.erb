@@ -14,10 +14,6 @@
     <li><%= link_to "Delete", exchange_path(@exchange), :method => :delete %> </li>
     <% end %>
     <!-- need cancel button -->
-    
-    <% if @exchange.requester_id == nil %> 
-    <%= button_to "confirm", confirm_exchange_path, :id => @exchange.id, :method => :put %>
-    <% end %> 
  
     <%= button_to "buy", buy_path, :id => @exchange.id, :method => :get %>
 

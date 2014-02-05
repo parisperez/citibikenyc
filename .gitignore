@@ -16,3 +16,8 @@
 /tmp
 /.slugignore
 config/initializers/stripe.rb
+config/initializers/secret_token.rb
+/sendangel.in.key
+/sendangel.in.csr
+/sendangel.in.key
+/sendangel_in

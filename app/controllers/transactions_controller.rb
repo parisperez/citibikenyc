@@ -3,6 +3,13 @@ class TransactionsController < ApplicationController
   skip_before_action :authenticate_user!,
   only: [:new, :create]
 
+  before_filter :strip_iframe_protection
+
+  def iframe
+    @exchange = Exchange.find_by!(id: params[:id])
+    @sale = Sale.new(exchange_id: @exchange)
+  end
+
   def new
     @exchange = Exchange.find_by!(
       id: params[:id]
@@ -45,4 +52,10 @@ class TransactionsController < ApplicationController
     :filename => File.basename(filename),
     :content_type => resp.headers['Content-Type']
   end
+end
+
+private
+
+def strip_iframe_protection
+  response.headers.delete('X-Frame-Options')
 end
