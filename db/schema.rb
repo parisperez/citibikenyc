@@ -107,6 +107,13 @@ ActiveRecord::Schema.define(version: 20131208230535567) do
 
   add_index "sales", ["exchange_id"], name: "index_sales_on_exchange_id", using: :btree
 
+  create_table "stripe_events", force: true do |t|
+    t.string   "stripe_id"
+    t.string   "stripe_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "username",        null: false
     t.string   "email",           null: false

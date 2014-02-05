@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  stripe_id: MyString
+  stripe_type: MyString
+
+two:
+  stripe_id: MyString
+  stripe_type: MyString

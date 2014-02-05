@@ -4,7 +4,7 @@ Citibike::Application.routes.draw do
   get '/pickup/:guid', to: 'transactions#pickup', as: :pickup
   get '/download/:guid', to: 'transactions#download', as: :download
   match '/iframe/:id' => 'transactions#iframe', via: :get, as: :buy_iframe
-
+  resources :stripe_events, only: [:create]
   resources :sales
 
   get '/comment' => 'comment#create', :as => 'comments'
