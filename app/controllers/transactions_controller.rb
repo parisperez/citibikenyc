@@ -35,7 +35,6 @@ class TransactionsController < ApplicationController
     @error = e
     render :new
     end
-    binding.pry
   end
   
   def download
