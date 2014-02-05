@@ -26,7 +26,7 @@ class TransactionsController < ApplicationController
       id: params[:id]
       )
     sale = @exchange.sales.create(
-      amount: @exchange.price,
+      # amount: @exchange.price,
       email: params[:email],
       stripe_token: params[:stripeToken]
       )
