@@ -14,6 +14,11 @@ class PaymentsController < ApplicationController
       bank_account: params[:stripeToken]
     )
     current_user.update_attributes(:stripe_recipient_id => recipient.id)
+    if current_user.save?
+      redirect_to payments_confirm_path
+    else
+      render :new
+    end
   end
 
   def confirm
