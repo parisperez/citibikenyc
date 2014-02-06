@@ -8,6 +8,7 @@ class TransfersController < ApplicationController
   end
 
   def create
+    user = current_user
     transfer = Stripe::Transfer.create(
       amount: 100,
       currency: 'usd',
