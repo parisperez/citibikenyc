@@ -28,7 +28,7 @@ class TransactionsController < ApplicationController
     sale = @exchange.sales.create(
       amount: @exchange.price,
       email: params[:email],
-      stripe_token: params[:stripeToken]
+      stripe_token: params[:stripeToken],
       vendor_id: @exchange.vendor_id
       )
     sale.process!
