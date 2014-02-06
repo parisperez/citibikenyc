@@ -29,6 +29,7 @@ class TransactionsController < ApplicationController
       amount: @exchange.price,
       email: params[:email],
       stripe_token: params[:stripeToken]
+      vendor_id: @exchange.vendor_id
       )
     sale.process!
     if sale.finished?

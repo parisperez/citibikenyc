@@ -103,6 +103,7 @@ ActiveRecord::Schema.define(version: 20131208230535567) do
     t.text     "error"
     t.integer  "fee_amount"
     t.integer  "amount"
+    t.integer  "vendor_id"
   end
 
   add_index "sales", ["exchange_id"], name: "index_sales_on_exchange_id", using: :btree
@@ -115,12 +116,13 @@ ActiveRecord::Schema.define(version: 20131208230535567) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "username",        null: false
-    t.string   "email",           null: false
-    t.string   "password_digest", null: false
+    t.string   "username",            null: false
+    t.string   "email",               null: false
+    t.string   "password_digest",     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "role"
+    t.integer  "stripe_recipient_id"
   end
 
   create_table "versions", force: true do |t|

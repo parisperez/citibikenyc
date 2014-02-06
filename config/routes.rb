@@ -4,6 +4,13 @@ Citibike::Application.routes.draw do
   get '/pickup/:guid', to: 'transactions#pickup', as: :pickup
   get '/download/:guid', to: 'transactions#download', as: :download
   match '/iframe/:id' => 'transactions#iframe', via: :get, as: :buy_iframe
+  get '/payments', to: 'payments#new'
+  post '/payments', to: 'payments#create'
+  get '/payments/confirm', to: 'payments#confirm'
+  get '/transfer', to: 'transfer#new'
+  post '/transfer', to: 'transfer#create'
+  get '/transfer/confirm', to: 'transfer#confirm'
+
   resources :stripe_events, only: [:create]
   resources :sales
 
@@ -21,7 +28,7 @@ Citibike::Application.routes.draw do
     resources :favorites
       member do
         post 'favorite'
-      end  
+      end   
   end
   
   get 'account' => 'welcome#account'
