@@ -17,6 +17,7 @@ class PaymentsController < ApplicationController
     if current_user.stripe_recipient_id != nil
       redirect_to payments_confirm_path
     else
+      # this is failing the test. should not go to confirm page.
       render :new
     end
   end

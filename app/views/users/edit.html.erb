@@ -6,4 +6,5 @@
 <%= link_to "Connect Your Stripe Account", payments_path %>
 
 <h2>Transfer your available funds</h2>
-<%= link_to "Collect Funds", transfer_path(current_user.id) %>
+<%= link_to "Collect Funds", transfer_path %>
+ <%= button_to "Collect Funds", transfer_path, :method => :post %>

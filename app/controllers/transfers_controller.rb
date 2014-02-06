@@ -14,7 +14,7 @@ class TransfersController < ApplicationController
       recipient: user.stripe_recipient_id,
       description: 'Transfer'
     )
-    render :transfer
+    redirect_to transfer_confirm_path
   end
 
   def confirm
