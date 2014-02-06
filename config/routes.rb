@@ -7,9 +7,9 @@ Citibike::Application.routes.draw do
   get '/payments', to: 'payments#new'
   post '/payments', to: 'payments#create'
   get '/payments/confirm', to: 'payments#confirm'
-  get '/transfers', to: 'transfer#new'
-  post '/transfers', to: 'transfer#create'
-  get '/transfers/confirm', to: 'transfer#confirm'
+  get '/transfers', to: 'transfers#new'
+  post '/transfers', to: 'transfers#create'
+  get '/transfers/confirm', to: 'transfers#confirm'
 
   resources :stripe_events, only: [:create]
   resources :sales
