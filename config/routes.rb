@@ -5,7 +5,7 @@ Citibike::Application.routes.draw do
   get '/download/:guid', to: 'transactions#download', as: :download
   match '/iframe/:id' => 'transactions#iframe', via: :get, as: :buy_iframe
   get '/payments', to: 'payments#new'
-  post '/payments', to: 'payments#create'
+  post '/payments/:id', to: 'payments#create'
   get '/payments/confirm', to: 'payments#confirm'
   get '/transfer', to: 'transfer#new'
   post '/transfer', to: 'transfer#create'
