@@ -24,6 +24,7 @@ Citibike::Application.routes.draw do
     end
   end
 
+  devise_for :users, :path => "auth", :path_names => { :sign_in => 'login', :sign_out => 'logout' }
   resources :users do
     resources :favorites
       member do
@@ -33,6 +34,6 @@ Citibike::Application.routes.draw do
   
   get 'account' => 'welcome#account'
   root 'welcome#index'
-  resource :session, only: [:destroy, :create, :new]
+  # resource :session, only: [:destroy, :create, :new]
 
 end

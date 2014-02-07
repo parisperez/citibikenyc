@@ -7,8 +7,8 @@
 </div>    
 
     <% unless logged_in?  %> 
-      <h2><%= link_to "Log In", new_session_path %> |
-      <%= link_to "Create Account", new_user_path %>
+      <h2><%= link_to "Sign up", new_user_registration_path %> |
+      <%= link_to "Sign in", new_user_session_path %>
       </h2>
     <% end  %>
 
@@ -19,4 +19,3 @@
       <%= link_to 'Logout', session_path, :method => :delete %>
       </h2> 
     <% end %>
-

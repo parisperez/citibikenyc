@@ -19,7 +19,7 @@ gem "letsrate", "~> 1.0.8"
 gem 'acts_as_commentable'
 gem "appointments", "~> 1.3.3"
 gem 'jquery-ui-rails'
-gem 'devise', '~> 3.0.0.rc'
+gem 'devise', '~> 3.1.1'
 gem 'paperclip', '~> 3.5.1'
 gem 'aws-sdk'
 gem 'httparty'

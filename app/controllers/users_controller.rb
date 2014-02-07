@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
 
-  self.before_action( :authenticated!, :set_user, :authorized!, except: [:new, :create] )
+  before_filter :authenticate_user!
+  # self.before_action( :authenticated!, :set_user, :authorized!, except: [:new, :create] )
 
   def show
+    @user = current_user
     @exchanges = Exchange.all
     render :show
   end
