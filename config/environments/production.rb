@@ -78,18 +78,17 @@ Citibike::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-  address: 'smtp.mandrillapp.com',
-  port: 587,
-  user_name: ENV['MANDRILL_USERNAME'],
-  password: ENV['MANDRILL_APIKEY'],
-  domain: 'heroku.com',
-  authentication: :plain
-  }
-  config.action_mailer.default_url_options = {
-  :host => 'sheltered-basin-4394.herokuapp.com/'
-  }
+  # config.action_mailer.smtp_settings = {
+  # address: 'smtp.mandrillapp.com',
+  # port: 587,
+  # user_name: ENV['MANDRILL_USERNAME'],
+  # password: ENV['MANDRILL_APIKEY'],
+  # domain: 'heroku.com',
+  # authentication: :plain
+  # }
+  # config.action_mailer.default_url_options = {
+  # :host => 'sheltered-basin-4394.herokuapp.com/'
+  # }
 
   config.paperclip_defaults = {
     storage: :s3,
@@ -100,13 +99,28 @@ Citibike::Application.configure do
     }
   }
 
-Rails.configuration.stripe = {
-publishable_key: ENV['STRIPE_PUBLISHABLE_KEY'],
-secret_key: ENV['STRIPE_SECRET_KEY'],
-}
-Stripe.api_key = Rails.configuration.stripe[:secret_key]
+  Rails.configuration.stripe = {
+  publishable_key: ENV['STRIPE_PUBLISHABLE_KEY'],
+  secret_key: ENV['STRIPE_SECRET_KEY'],
+  }
+  Stripe.api_key = Rails.configuration.stripe[:secret_key]
 
 # force visitors to HTTPS, for stripe
-config.force_ssl = true
+  config.force_ssl = true
+
+  # configuring mail with devise
+  config.action_mailer.default_url_options = { :host => 'https://sheltered-basin-4394.herokuapp.com/' }
+
+  config.action_mailer.delivery_method = :smtp 
+
+  config.action_mailer.smtp_settings = {
+  address: "smtp.gmail.com",
+  port: 587,
+  domain: ENV["GMAIL_DOMAIN"],
+  authentication: "plain",
+  enable_starttls_auto: true,
+  user_name: ENV["GMAIL_USERNAME"],
+  password: ENV["GMAIL_PASSWORD"]
+  }
 
 end
