@@ -27,6 +27,8 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'brakeman'
 gem 'aasm'
 gem 'paper_trail', '~> 3.0.0.beta', git: 'git://github.com/airblade/paper_trail.git'
+gem "sms_fu", "~> 1.1.2"
+gem "pony", "~> 1.6.2"
 
 group :development do
   gem 'foreman'

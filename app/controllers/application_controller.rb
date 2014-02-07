@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   # include SessionsHelper
   include ExchangesHelper
+  include SMSFu
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
 

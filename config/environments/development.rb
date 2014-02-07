@@ -31,6 +31,9 @@ Citibike::Application.configure do
 :host => 'localhost:3000'
 }
 
+# ActionMailer delivery
+sms_fu = SMSFu::Client.configure(:delivery => :action_mailer)
+
 config.action_mailer.delivery_method = :smtp
 
 config.action_mailer.smtp_settings = {
