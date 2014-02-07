@@ -109,7 +109,7 @@ Citibike::Application.configure do
   config.force_ssl = true
 
   # configuring mail with devise
-  config.action_mailer.default_url_options = { :host => 'https://sendangel.in' }
+  config.action_mailer.default_url_options = { :host => 'https://www.sendangel.in' }
 
   config.action_mailer.delivery_method = :smtp 
 
