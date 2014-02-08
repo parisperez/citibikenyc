@@ -6,16 +6,16 @@
    </ul> 
 </div>    
 
-    <% unless logged_in?  %> 
+    <% unless user_signed_in? %> 
       <h2><%= link_to "Sign up", new_user_registration_path %> |
       <%= link_to "Sign in", new_user_session_path %>
       </h2>
     <% end  %>
 
 
-    <% if logged_in? %>
+    <% if user_signed_in? %>
       <h2>
       <%= link_to "New Search", new_search_path %> |
-      <%= link_to 'Logout', session_path, :method => :delete %>
+      <%= link_to "Log out", destroy_user_session_path, method: :delete %>
       </h2> 
     <% end %>

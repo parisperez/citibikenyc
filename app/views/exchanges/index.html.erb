@@ -3,18 +3,17 @@
   
   <% @exchanges.each do |exchange| %>
   <ul>
-  <% @requester = User.find_by(id: [exchange.requester_id.to_i]) %>
+  <!-- < @requester = User.find_by(id: [exchange.requester_id.to_i]) %> -->
   <% if exchange.vendor_id == nil %>
-    <li>Requester: <%= exchange.requester_id %></li>
-    <li>Requester name: <%= @requester.username %> </li>
     <li>Station: <%= exchange.station %></li>
-    <li>Date: <%= exchange.date %></li>
-    <li>Time: <%= exchange.time %></li>
-    <li>Price: $<%= exchange.price %>0</li>
-    <li>Is_bike: <%= exchange.is_bike %></li>
-    <% unless exchange.requester_id == nil %>
-    <%= button_to "select", exchange_path(exchange), :method => :get %>
-    <% end %>   
+    <li>Time: <%= exchange.transform_time %></li>
+    <li>Price: <%= number_to_currency(exchange.price * 0.1, :unit => "$")  %></li>
+      <% if exchange.is_bike == true %>
+          <li>Service: Deliver a Bike</li>
+      <% else %>
+         <li>Service: Open up a Dock</li>
+      <% end %>
+    <li><%= button_to "select", exchange_path(exchange), :method => :get %></li> 
   </ul>
   <% end %>
   <% end %>

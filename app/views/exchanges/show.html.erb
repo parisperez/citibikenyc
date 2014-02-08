@@ -9,14 +9,13 @@
     <% else %>
     <li>Need a Dock</li>
     <% end %>
-    <% if @exchange.vendor_id == nil and current_user.id == @exchange.requester_id %>
+    <% if @exchange.vendor_id == nil and current_user.id == @exchange.user_id %>
     <li><%= link_to "Delete", exchange_path(@exchange), :method => :delete %> </li>
     <% end %>
-    <!-- need cancel button -->
  
-    <%= button_to "buy", buy_path, :id => @exchange.id, :method => :get %>
+    <!-- < button_to "buy", buy_path, :id => @exchange.id, :method => :get %> -->
 
-    <% if @exchange.requester_id != current_user.id && @exchange.requester_id != nil %> 
+    <% if @exchange.user_id != current_user.id && @exchange.vendor_id == nil %> 
     <%= button_to "claim", claim_exchange_path, :id => @exchange.id, :method => :put %>
       <% end %> 
 

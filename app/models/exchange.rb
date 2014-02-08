@@ -16,15 +16,14 @@ class Exchange < ActiveRecord::Base
     greater_than: 49,
     message: "must be at least 50 cents"
 
-  # def transform_date
-  #   d = Date.parse(self.date.to_s)
-  #   return "#{Date::MONTHNAMES[d.mon]} #{d.mday}, #{d.year}"
-  # end
+  def transform_date
+    d = Date.parse(self.date.to_s)
+    return "#{Date::MONTHNAMES[d.mon]} #{d.mday}, #{d.year}"
+  end
 
-  # def transform_time
-  #   d = Date.parse(self.time.to_s)
-  #   return "#{Date::MONTHNAMES[d.day]} #{d.dhr}, #{d.dmin}"
-  # end
+  def transform_time
+    return self.time.in_time_zone('Eastern Time (US & Canada)').httpdate
+  end
 
   # def set_vendor(exchange, id)
   #   self.vendor_id = current_user.id
