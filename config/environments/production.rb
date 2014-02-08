@@ -109,7 +109,6 @@ Citibike::Application.configure do
   config.force_ssl = true
 
   # ActionMailer delivery
-  sms_fu = SMSFu::Client.configure(:delivery => :action_mailer)
 
   # configuring mail with devise
   config.action_mailer.default_url_options = { :host => 'https://www.sendangel.in' }

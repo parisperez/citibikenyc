@@ -1,4 +1,7 @@
 class ExchangesController < ApplicationController
+  TWILIO_SID = 'AC19f56d8782421ab57fe7ac71d998b714'
+  TWILIO_AUTH = 'e6d037c71b9924019d62160d15949bb7'
+  TWILIO_NUMBER = "+12132238913"
 
   def new
     @exchange = Exchange.new
@@ -47,6 +50,16 @@ class ExchangesController < ApplicationController
         status: :created,
         location: @exchange
         }
+        @twilio_client = Twilio::REST::Client.new(
+        TWILIO_SID,
+        TWILIO_AUTH
+        )
+ 
+        @twilio_client.account.sms.messages.create(
+        :from => TWILIO_NUMBER,
+        :to => "+1#{2133213989}",
+        :body => "Greetings from SendAngel! Wheelie!",
+        )
       else
         format.html { render 'new' }
         format.json {
@@ -55,7 +68,6 @@ class ExchangesController < ApplicationController
         }
       end
     end   
-    # binding.pry
   end
 
   def show

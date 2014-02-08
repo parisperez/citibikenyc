@@ -32,7 +32,6 @@ Citibike::Application.configure do
 }
 
 # ActionMailer delivery
-sms_fu = SMSFu::Client.configure(:delivery => :action_mailer)
 
 config.action_mailer.delivery_method = :smtp
 
