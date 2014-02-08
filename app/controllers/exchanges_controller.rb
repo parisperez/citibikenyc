@@ -85,7 +85,6 @@ class ExchangesController < ApplicationController
         }
       end
     end   
-    binding.pry
   end
 
   def show

@@ -1,27 +1,25 @@
 <div class="panel panel-default">
   <div class="panel-heading">  
-    <h6>Schedule an exchange:</h6>
+    <h1>SEND ANGEL IN:</h1>
   </div>
 
 <div class="panel-body" id="new-exchange">
   <%= form_for [@exchange], :action => :create do |f| %>
 
- 
   <div class="form-group">
-    <%= f.label :station %>
-    <%= f.text_field :station, :value => params[:station], class: "form-control"  %>
+    <%= select_tag(:time, options_for_select([['Right now', 1], ['15 minutes', 2], ['30 Minutes', 3], ['45 Minutes', 4]], 2)) %></br>
+    <!-- < f.time_field :time, class: "form-control" %></br>  -->
+  </div> 
+
+  <div class="form-group">
+    <%= f.label :station, "Station nearest to:" %>
+    <%= f.text_field :station, :placeholder => "Tell me an address...", :value => params[:station], class: "form-control"  %>
   </div>
   
 <!--   <div class="form-group">
     < f.label :date %></br> 
     < f.date_field :date, class: "form-control" %></br>
   </div> -->  
-
-  <div class="form-group">
-    <%= f.label :time %></br> 
-    <%= select_tag(:time, options_for_select([['Right now', 1], ['15 minutes', 2], ['30 Minutes', 3], ['45 Minutes', 4]], 2)) %></br>
-    <!-- < f.time_field :time, class: "form-control" %></br>  -->
-  </div> 
 
   <div class="form-group">
     <%= f.label :price %></br> 
@@ -45,7 +43,7 @@
         <input type="radio" class="input_radio" name=":is_bike" value= <%= @exchange.is_bike = false %>>
       </label>
   </div>  
-    <%= f.submit nil, class: "btn btn-default" %>
+    <%= f.submit "Send Angel!", class: "btn btn-default" %>
     <% end %> 
   </div>
 </div>
