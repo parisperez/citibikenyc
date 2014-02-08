@@ -4,14 +4,21 @@
   <ul>
     <% if @user.favorites.length != 0 %>
       <% @user.favorites.each do |favorite| %>
+      <li><%= favorite.address %></li>
+
+      <!-- NEW SEARCH -->
       <%= form_tag searches_path, :method => :post do %>
-      <li class="favorites"><%= submit_tag "#{favorite.address}", :class => 'btn btn-default', :name => :address %></li>
+      <li class="favorites"><%= submit_tag "Search", :class => 'btn btn-default', :name => :address %></li>
       <% end %>
+      
+      <!-- NEW EXCHANGE -->
+      <li><%= link_to "Send Me an Angel", new_exchange_path({:station => favorite.address}), :class => "btn btn-default" %></li>
       <% end %>
     <% else %>
       <p>You haven't saved any destinations yet.</p>  
     <% end %>
   </ul>
+
 <% @exchanges.each do |exchange| %>
   <% if exchange.requester_id == current_user.id %>
   <h2>Your currently scheduled exchange:</h2>

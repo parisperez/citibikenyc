@@ -18,6 +18,18 @@ class ExchangesController < ApplicationController
     @exchanges = Exchange.all
     @exchange = Exchange.new(exchange_params)  
     @exchange.user = current_user
+
+    time_choice = params[:time]
+    if time_choice == "1"
+      @exchange.time = Time.now
+    elsif time_choice == "2"
+      @exchange.time = Time.now + 15*60  
+    elsif time_choice == "3"
+      @exchange.time = Time.now + 30*60    
+    elsif time_choice == "4"
+      @exchange.time = Time.now + 45*60  
+    end
+
     choice = params[":is_bike"]    
     if choice == "true"
       @exchange.is_bike = true
@@ -39,6 +51,8 @@ class ExchangesController < ApplicationController
       @exchange.station = @station["label"]
       @exchange.save   
     end
+
+    # FOR STRIPE
     respond_to do |format|
       if @exchange.save
         format.html {
@@ -50,6 +64,8 @@ class ExchangesController < ApplicationController
         status: :created,
         location: @exchange
         }
+
+        # FOR TWILIO
         @twilio_client = Twilio::REST::Client.new(
         TWILIO_SID,
         TWILIO_AUTH
@@ -61,6 +77,7 @@ class ExchangesController < ApplicationController
         :body => "Greetings from SendAngel! Wheelie!",
         )
       else
+        # FOR STRIPE
         format.html { render 'new' }
         format.json {
         render json: @exchange.errors,
@@ -68,6 +85,7 @@ class ExchangesController < ApplicationController
         }
       end
     end   
+    binding.pry
   end
 
   def show

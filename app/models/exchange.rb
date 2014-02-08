@@ -1,5 +1,5 @@
 class Exchange < ActiveRecord::Base
-  validates :station, :date, :time, :price, presence: true
+  validates :station, :time, :price, presence: true
   has_attached_file :file
   belongs_to :user
   belongs_to :requester,
@@ -16,10 +16,10 @@ class Exchange < ActiveRecord::Base
     greater_than: 49,
     message: "must be at least 50 cents"
 
-  def transform_date
-    d = Date.parse(self.date.to_s)
-    return "#{Date::MONTHNAMES[d.mon]} #{d.mday}, #{d.year}"
-  end
+  # def transform_date
+  #   d = Date.parse(self.date.to_s)
+  #   return "#{Date::MONTHNAMES[d.mon]} #{d.mday}, #{d.year}"
+  # end
 
   # def transform_time
   #   d = Date.parse(self.time.to_s)
