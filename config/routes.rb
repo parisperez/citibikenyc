@@ -1,4 +1,5 @@
 Citibike::Application.routes.draw do
+  post '/rate' => 'rater#create', :as => 'rate'
   get '/buy/:id', to: 'transactions#new', as: :show_buy
   post '/buy/:id', to: 'transactions#create', as: :buy
   get '/pickup/:guid', to: 'transactions#pickup', as: :pickup
@@ -16,7 +17,6 @@ Citibike::Application.routes.draw do
 
   get "comments/index"
   get "comments/new"
-  get '/rate' => 'rater#create', :as => 'rate'
   resources :searches, only: [:new, :create, :index]
   resources :exchanges  do
     member do
