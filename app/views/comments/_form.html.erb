@@ -1,9 +1,28 @@
-<ul>
-  <%= form_for(:comment, :url => comments_path(commentable.class.to_s.underscore, commentable.id)) do |f| %>
-  <%= f.label :title %></br>
-  <%= f.text_field :title, :class => 'field' %></br>
-  <%= f.label :comment %></br>
-  <%= f.text_field :comment, :class => 'field' %></br>
-  <%= f.submit 'Submit' %>
-  <% end %>
-</ul>
+<div class="panel panel-default" id="leave-review">
+  <div class="panel-heading">
+    <div class="panel-title">
+      <h3>LEAVE A REVIEW</h3>
+    </div>
+  </div>
+  <div class="panel-body">
+    <%= form_for [@commentable, @comment] do |f| %>
+      <% if @comment.errors.any? %>
+        <div class="error_messages">
+          <h2>Please correct the following errors.</h2>
+          <ul>
+          <% @comment.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="form-group">
+        <%= f.text_area :content, class: "form-control", :autofocus => true %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "submit", class: "btn btn-primary" %>
+      </div> 
+  </div>
+    <% end %>
+</div>    
+

@@ -25,13 +25,14 @@ ActiveRecord::Schema.define(version: 20131208230535567) do
 
   create_table "comments", force: true do |t|
     t.string   "title",            limit: 50, default: ""
-    t.text     "comment"
+    t.text     "content"
     t.integer  "commentable_id"
     t.string   "commentable_type"
     t.integer  "user_id"
     t.string   "role",                        default: "comments"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "commenter_id"
   end
 
   add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id", using: :btree
@@ -138,6 +139,10 @@ ActiveRecord::Schema.define(version: 20131208230535567) do
     t.integer  "failed_attempts",        default: 0,  null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "image_url"
+    t.text     "headline"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

@@ -1,0 +1,17 @@
+<div class="well" id="reviews">
+  <h3>REVIEWS</h3>
+    <table class="table" id="comments">
+      <% @comments.each do |comment| %>
+          <% @commenters[0].each do |commenter| %> 
+            <tr class="commenter-name">
+              <td class="commenter-name"><%= commenter.username %></td>
+            </tr>
+            <tr id="comment-li">
+                <td class="commenter-td"><img class="commenter" src="<%= commenter.image_url %>" alt="profile image">
+                </td>
+              <td class="comment-content-td"><%= simple_format comment.content %></td>
+            </tr>
+         <% end %>
+      <% end %>
+    </table>
+</div>    

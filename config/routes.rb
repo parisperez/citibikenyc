@@ -14,7 +14,8 @@ Citibike::Application.routes.draw do
   resources :stripe_events, only: [:create]
   resources :sales
 
-  get '/comment' => 'comment#create', :as => 'comments'
+  get "comments/index"
+  get "comments/new"
   get '/rate' => 'rater#create', :as => 'rate'
   resources :searches, only: [:new, :create, :index]
   resources :exchanges  do
@@ -26,6 +27,7 @@ Citibike::Application.routes.draw do
 
   devise_for :users, :path => "auth", :path_names => { :sign_in => 'login', :sign_out => 'logout' }
   resources :users do
+    resources :comments
     resources :favorites
       member do
         post 'favorite'

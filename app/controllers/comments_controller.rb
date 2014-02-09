@@ -1,34 +1,33 @@
 class CommentsController < ApplicationController
-
   before_filter :load_commentable
-  def create
-    @comment = @commentable.comments.build(params[:comment])
-    @comment.user = current_user
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_to @commentable }
-      else
-        format.html { render :action => 'new' }
-      end
-    end
-  end
-
-   def get_user
-    @user = User.find(params[:commentable_id])
-  end
-
+  
   def index
-    @user = User.find(params[:commentable_id])
-    @comments = @user.comment.all # or sorted by date, or paginated, etc.
+    @comments = @commentable.comments
+    @commenters = User.where(id: [@comment.commenter_id])
   end
 
-  protected
+  def new
+    @comment = @commentable.comments.new
+  end
+  
+def create
+  @comment = @commentable.comments.new(comment_params)
+  @comment.commenter_id = current_user.id
+  if @comment.save
+    redirect_to @commentable, notice: "Comment created."
+  else
+    render :new
+  end
+  end
+  
+  private
+
+  def comment_params
+    params.require(:comment).permit(:content, :commenter_id)
+  end
 
   def load_commentable
-    @commentable = params[:commentable_type].camelize.constantize.find(params[:commentable_id])
+    resource, id = request.path.split('/')[1,2]
+    @commentable = resource.singularize.classify.constantize.find(id)
   end
-
-
-
-
 end

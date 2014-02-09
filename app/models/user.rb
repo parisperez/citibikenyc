@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true
   letsrate_rateable
   letsrate_rater
-  acts_as_commentable
+  has_many :comments, as: :commentable  
   has_many :favorites
   has_many :received_exchanges,
   :class_name => 'Exchange',

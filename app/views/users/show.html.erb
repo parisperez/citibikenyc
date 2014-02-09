@@ -1,4 +1,4 @@
-
+<center><%= rating_for @user %></center>
 
 <h2>Your Saved Destinations:</h2>
   <ul>
@@ -45,6 +45,17 @@
   <h2> <%= link_to "All Exchanges", exchanges_path %> </h2> 
    <% end %> 
 </div>
+
+<div class="comment-form">
+  <%= render "comments/form" %>
+</div>
+
+  <%= render "comments/comments" %> 
+
+
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag 'jquery.raty.js','letsrate.js'%>
+<% end %> 
 
   
 

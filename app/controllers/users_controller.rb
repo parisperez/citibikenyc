@@ -5,6 +5,13 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    @commentable = @user
+    @comments = @commentable.comments
+    @comment = Comment.new
+    @commenters = []
+    @comments.each do |comment|   
+      @commenters << User.where(id: [comment.commenter_id])
+    end
     @exchanges = Exchange.all
     render :show
   end
