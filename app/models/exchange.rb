@@ -25,6 +25,10 @@ class Exchange < ActiveRecord::Base
     return self.time.in_time_zone('Eastern Time (US & Canada)').httpdate
   end
 
+  def transform_price
+    return self.price * 0.1
+  end
+
   # def set_vendor(exchange, id)
   #   self.vendor_id = current_user.id
   # end
