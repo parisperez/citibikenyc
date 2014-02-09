@@ -22,7 +22,7 @@ class Exchange < ActiveRecord::Base
   end
 
   def transform_time
-    return self.time.in_time_zone('Eastern Time (US & Canada)').httpdate
+    return self.time.httpdate.in_time_zone('Eastern Time (US & Canada)')
   end
 
   def transform_price
