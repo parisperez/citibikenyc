@@ -16,4 +16,8 @@
 //= require jquery.ui.widget
 //= require bootstrap
 //= require turbolinks
+//= require jquery.raty
+//= require letsrate
+//= require comments
+//= require_self
 //= require_tree .
