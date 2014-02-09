@@ -89,7 +89,14 @@ class ExchangesController < ApplicationController
 
   def show
     @exchange = Exchange.find(params[:id])
-    # binding.pry
+    @user = current_user
+    @commentable = @user
+    @comments = @commentable.comments
+    @comment = Comment.new
+    @commenters = []
+    @comments.each do |comment|   
+      @commenters << User.where(id: [comment.commenter_id])
+    end
     render :show
   end
 

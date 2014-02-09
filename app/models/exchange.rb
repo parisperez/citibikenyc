@@ -10,7 +10,8 @@ class Exchange < ActiveRecord::Base
     :class_name => 'User',
     :primary_key => 'user_id',
     :foreign_key => 'vendor_id'   
-    
+  
+  has_many :comments, as: :commentable   
   has_many :sales
   validates_numericality_of :price,
     greater_than: 49,

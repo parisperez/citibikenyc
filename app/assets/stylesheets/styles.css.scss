@@ -259,6 +259,57 @@ h7 {
     margin-bottom: 10px;
 }
 
+.comment {
+    text-align: left !important;
+    font-family: 'Varela', sans-serif !important; 
+    list-style: none;
+}
+
+ #reviews {
+    margin-top: 40px;  
+    background-color: #ffffff;
+    margin-bottom: 40px;
+    margin-left: 80px;
+    margin-right: 80px;
+}
+
+.comment-content-td {
+    width: 500px;
+}
+
+.commenter-td {
+    width: 75px;
+    padding-right: 50px !important;
+}
+
+#comments {
+    text-align: left !important;
+}
+
+#comments td { 
+    border-top: none !important;
+ }
+
+.commenter {
+    width: 90px;
+    height: 60px;
+}
+
+.comment-form {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.commenter-name {
+   line-height: 0 !important;
+   min-height: 0 !important;
+   height: 0 !important;
+   padding-top: 30px !important;
+}
+
+
+/* START STYLE FOR SMALL SCREEN */
+
 @media (max-width: 480px) {
 
 
@@ -444,5 +495,7 @@ h7 {
     line-height: 70px;
     margin-top: 30px; 
 }
+
+
 
 } 
