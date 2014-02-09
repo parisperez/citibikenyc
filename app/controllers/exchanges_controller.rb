@@ -8,11 +8,15 @@ class ExchangesController < ApplicationController
     render :new
   end
 
-  # def update
-  #   @exchange = Exchange.find(id: params[:id])
-  #   @exchange.update_attributes(:vendor_id => current_user.id)
-  #   redirect_to exchange_path(@exchange)
-  # end
+  def update
+    @exchange = Exchange.find_by(id: params[:id])
+    @comment = Comment.find_by(commentable_id: params[:id])
+    @exchange.vendor_id = @comment.commenter_id
+    @exchange.price = @comment.counterprice
+    @exchange.save
+    redirect_to exchange_path(@exchange)
+
+  end
 
   def create
     @exchanges = Exchange.all
