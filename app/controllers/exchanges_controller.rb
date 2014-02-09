@@ -122,7 +122,7 @@ class ExchangesController < ApplicationController
     current_user.role = "vendor"
     current_user.save!
     @exchange.save!
-    redirect_to user_path(current_user)
+    redirect_to exchange_path(@exchange)
   end
 
   def destroy
