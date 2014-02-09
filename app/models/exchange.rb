@@ -26,7 +26,7 @@ class Exchange < ActiveRecord::Base
   end
 
   def transform_price
-    return (self.price / 10)
+    return (self.price.to_f / 10)
   end
 
   # def set_vendor(exchange, id)
