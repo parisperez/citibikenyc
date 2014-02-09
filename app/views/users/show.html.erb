@@ -1,4 +1,4 @@
-<center><%= rating_for @user %></center>
+<%= rating_for @user %>
 
 <h2>Your Saved Destinations:</h2>
   <ul>
@@ -51,7 +51,6 @@
 </div>
 
   <%= render "comments/comments" %> 
-
 
 <% content_for :javascript_includes do %>
   <%= javascript_include_tag 'jquery.raty.js','letsrate.js'%>
