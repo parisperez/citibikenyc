@@ -21,10 +21,15 @@
     < f.date_field :date, class: "form-control" %></br>
   </div> -->  
 
-  <div class="form-group">
-    <%= f.label :price %></br> 
-    <%= f.text_field :price, class: "form-control" %></br> 
-  </div> 
+  <div class="input-group">
+  <span class="input-group-addon">$</span>
+  <%= f.text_field :price, :placeholder => "example: 4.50", class: "form-control", :autofocus => true %>
+  </div><br>
+
+<!--   <div class="form-group">
+    < f.label :price %></br> 
+    < f.text_field :price, class: "form-control" %></br> 
+  </div>  -->
 
 <!--   <div class="form-group">
     < f.label :vendor_id %></br> 

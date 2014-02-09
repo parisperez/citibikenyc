@@ -90,7 +90,7 @@ class ExchangesController < ApplicationController
   def show
     @exchange = Exchange.find(params[:id])
     @user = current_user
-    @commentable = @user
+    @commentable = @exchange
     @comments = @commentable.comments
     @comment = Comment.new
     @commenters = []

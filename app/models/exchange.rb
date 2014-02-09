@@ -14,7 +14,7 @@ class Exchange < ActiveRecord::Base
   has_many :comments, as: :commentable   
   has_many :sales
   validates_numericality_of :price,
-    greater_than: 49,
+    greater_than: 0.49,
     message: "must be at least 50 cents"
 
   def transform_date
@@ -24,10 +24,6 @@ class Exchange < ActiveRecord::Base
 
   def transform_time
     return self.time.httpdate.in_time_zone('Eastern Time (US & Canada)')
-  end
-
-  def transform_price
-    return (self.price.to_f / 10)
   end
 
   # def set_vendor(exchange, id)

@@ -9,7 +9,7 @@
             <tr id="comment-li">
                 <td class="commenter-td"><img class="commenter" src="<%= commenter.image_url %>" alt="profile image">
                 </td>
-              <td class="comment-content-td"><%= simple_format comment.content %></td>
+              <td class="comment-content-td"><%= number_to_currency(comment.counterprice, :unit => "$") %></td>
             </tr>
          <% end %>
       <% end %>

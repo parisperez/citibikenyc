@@ -7,7 +7,7 @@
   <% if exchange.vendor_id == nil %>
     <li>Station: <%= exchange.station %></li>
     <li>Time: <%= exchange.transform_time %></li>
-    <li>Price: <%= number_to_currency(exchange.transform_price, :unit => "$")  %></li>
+    <li>Price: <%= number_to_currency(exchange.price, :unit => "$")  %></li>
       <% if exchange.is_bike == true %>
           <li>Service: Deliver a Bike</li>
       <% else %>

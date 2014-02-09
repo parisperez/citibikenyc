@@ -24,15 +24,15 @@ ActiveRecord::Schema.define(version: 20131208230535567) do
   end
 
   create_table "comments", force: true do |t|
-    t.string   "title",            limit: 50, default: ""
-    t.text     "content"
+    t.string   "title",            limit: 50,                         default: ""
     t.integer  "commentable_id"
     t.string   "commentable_type"
     t.integer  "user_id"
-    t.string   "role",                        default: "comments"
+    t.string   "role",                                                default: "comments"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "commenter_id"
+    t.decimal  "counterprice",                precision: 8, scale: 2
   end
 
   add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id", using: :btree
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20131208230535567) do
     t.string   "file_content_type"
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
-    t.integer  "price"
+    t.decimal  "price",             precision: 8, scale: 2
   end
 
   create_table "favorites", force: true do |t|

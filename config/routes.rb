@@ -23,6 +23,7 @@ Citibike::Application.routes.draw do
       put 'claim'
       put 'confirm'
     end
+    resources :comments
   end
 
   devise_for :users, :path => "auth", :path_names => { :sign_in => 'login', :sign_out => 'logout' }
