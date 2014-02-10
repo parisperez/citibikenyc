@@ -23,7 +23,29 @@
 </div>
 
 <div class="comment-form">
-  <%= render "comments/form" %>
+  <% if @exchange.user_id != current_user.id && @exchange.vendor_id == nil %> 
+    <%= render "comments/form" %>
+  <% end %> 
 </div>
 
-<%= render "comments/comments" %> 
+  <% if @exchange.user_id == current_user.id && @exchange.vendor_id == nil %> 
+    <%= render "comments/commentsuserview" %> 
+  <% end %>  
+
+  <% @comments.each do |comment| %>
+    <% @commenters[0].each do |commenter| %> 
+      <% if comment.commenter_id == current_user.id %> 
+       <%= render "comments/commentsvendorview" %> 
+      <% end %>  
+    <% end %> 
+  <% end %> 
+
+
+
+
+
+
+
+
+
+

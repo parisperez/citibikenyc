@@ -4,20 +4,28 @@ class CommentsController < ApplicationController
   def index
     @comments = @commentable.comments
     @commenters = User.where(id: [@comment.commenter_id])
+
   end
 
   def new
     @comment = @commentable.comments.new
   end
   
-def create
-  @comment = @commentable.comments.new(comment_params)
-  @comment.commenter_id = current_user.id
-  if @comment.save
-    redirect_to @commentable, notice: "Counter offer created."
-  else
-    render :new
+  def create
+    @comment = @commentable.comments.new(comment_params)
+    @comment.commenter_id = current_user.id
+    if @comment.save
+      redirect_to @commentable, notice: "Counter offer created."
+    else
+      render :new
+    end
   end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    if @comment.destroy
+      redirect_to exchange_path(@exchange)
+    end
   end
   
   private
