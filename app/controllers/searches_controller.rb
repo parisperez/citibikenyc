@@ -41,8 +41,6 @@ class SearchesController < ApplicationController
     end
 
      render :results
-    else
-     render erb: "<%= debug Geocoder.coordinates(params[:address]) %>"  
     end
   end
 
