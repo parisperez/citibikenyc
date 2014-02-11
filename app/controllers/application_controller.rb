@@ -19,4 +19,8 @@ class ApplicationController < ActionController::Base
     user_path(current_user.id)
   end
 
+  def after_registration_path_for(resource)
+    new_customer_path
+  end
+
 end
