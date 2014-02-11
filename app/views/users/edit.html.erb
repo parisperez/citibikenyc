@@ -3,8 +3,8 @@
 <%= render 'form' %>
 
 <h2>Save your payment info to start using SendAngel</h2>
-<%= form_tag customers_path, :method => :post do %>
-<li class=><%= submit_tag "Enter Your Payment Method", :class => 'btn btn-default'%></li>
+<%= form_tag new_customer_path, :method => :get do %>
+<li><%= submit_tag "Enter Your Payment Method", :class => 'btn btn-default' %></li>
 <% end %>
 
 <h2>Let us pay you</h2>
