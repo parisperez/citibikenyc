@@ -15,7 +15,6 @@ class ExchangesController < ApplicationController
     @exchange.price = @comment.counterprice
     @exchange.save
     redirect_to exchange_path(@exchange)
-
   end
 
   def create

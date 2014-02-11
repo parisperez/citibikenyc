@@ -19,6 +19,10 @@
         <li><%= button_to "Claim", claim_exchange_path, :id => @exchange.id, :method => :put %></li>
     <% end %> 
 
+    <% if current_user.id == @exchange.vendor_id %> 
+        <li><%= button_to "Complete", buy_path, :id => @exchange.id, :method => :post %></li>
+    <% end %> 
+
   </ul>
 </div>
 

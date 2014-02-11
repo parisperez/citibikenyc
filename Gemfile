@@ -28,6 +28,8 @@ gem 'brakeman'
 gem 'aasm'
 gem 'paper_trail', '~> 3.0.0.beta', git: 'git://github.com/airblade/paper_trail.git'
 gem "twilio-ruby", "~> 3.11.5"
+gem 'omniauth'
+gem 'omniauth-stripe-connect'
 
 group :development do
   gem 'foreman'

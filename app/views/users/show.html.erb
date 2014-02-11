@@ -12,9 +12,12 @@
       <% end %>
       
       <!-- NEW EXCHANGE -->
-      <li><%= link_to "Send Me an Angel", new_exchange_path({:station => favorite.address}), :class => "btn btn-default" %></li>
+<!--       <li>< link_to "Send Me an Angel", new_exchange_path({:station => favorite.address}), :class => "btn btn-default" %></li>
+      < end %> -->
+      <li><a href="https://connect.stripe.com/oauth/authorize?response_type=code&client_id=ca_3RZ0RC5ou8eIzbhddmzibN6kWg3fAtoI&scope=read_write&state=1234
+" class="btn btn-default">Send me an angel</a></li>
       <% end %>
-    <% else %>
+      <% else %>
       <p>You haven't saved any destinations yet.</p>  
     <% end %>
   </ul>
