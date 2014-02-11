@@ -8,12 +8,6 @@ class CustomersController < ApplicationController
       :card => token,
       :description => params[:email]
       )
-    customer.process!
-    if customer.finished?
-      redirect_to user_path(current_user.id), notice: "Your payment info has been saved."
-    else
-      redirect_to user_path(current_user.id), notice: "There was an issue saving your payment info."
-    end
   end
 
 end  
