@@ -10,9 +10,6 @@
       <%= form_tag searches_path, :method => :post do %>
       <li class="favorites"><%= submit_tag "Search", :class => 'btn btn-default', :name => :address %></li>
       <% end %>
-     
-      <!-- NEW EXCHANGE -->
-      <li><%= link_to "Send Me an Angel", new_exchange_path({:station => favorite.address}), :class => "btn btn-default" %></li>
       <% end %>
       <% else %>
       <p>You haven't saved any destinations yet.</p>  

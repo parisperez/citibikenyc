@@ -6,13 +6,16 @@
           <% if @winning_bike_station["label"] == @winning_dock_station["label"]  %> 
           <li><%= "CityBike Station:"%><address><%= "#{@winning_bike_station["label"].gsub("Broadway & W 24 St","1107 Broadway")}"%></address></li>
           <li><%="Docks: #{@winning_bike_station["availableDocks"] }.  Bikes: #{@winning_bike_station["availableBikes"] }"  %></li>
+          <li><%= link_to "Send Me an Angel", new_exchange_path({:station => "#{@winning_bike_station["label"].gsub("Broadway & W 24 St","1107 Broadway")}"}), :class => "btn btn-default" %></li>
         </ul>
         <% else %>
         <ul>
           <li><%= "Docks:"%><address><%="#{@winning_dock_station["label"].gsub("Broadway & W 24 St","1107 Broadway")}"%></address></li>
           <li><%="Available: #{@winning_dock_station["availableDocks"] }" %></li></br>
+          <li><%= link_to "Send Me an Angel", new_exchange_path({:station => "#{@winning_dock_station["label"].gsub("Broadway & W 24 St","1107 Broadway")}"}), :class => "btn btn-default" %></li>
           <li><%= "Bikes: "%><address><%="#{@winning_bike_station["label"]}"%></address></li>
           <li><%="Available: #{@winning_bike_station["availableBikes"] }" %></li>
+          <li><%= link_to "Send Me an Angel", new_exchange_path({:station => "#{@winning_bike_station["label"].gsub("Broadway & W 24 St","1107 Broadway")}"}), :class => "btn btn-default" %></li>
         </ul>   
         <% end %>
       <% end  %>
@@ -23,6 +26,7 @@
           <li>Next closest station:</li>       
           <li><address><%= "#{@next_best_station[0]["label"].gsub("Broadway & W 24 St","1107 Broadway")}"%></address></li>
           <li><%= "Docks: #{@next_best_station[0]["availableDocks"]}.  Bikes: #{@next_best_station[0]["availableBikes"]}" %></li>
+          <li><%= link_to "Send Me an Angel", new_exchange_path({:station => "#{@next_best_station[0]["label"].gsub("Broadway & W 24 St","1107 Broadway")}"}), :class => "btn btn-default" %></li>
         <ul>
       <% end %>    
     </div> <!-- results -->
