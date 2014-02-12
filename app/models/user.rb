@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
        :recoverable, :rememberable, :trackable, :validatable, :confirmable
   validates :username, uniqueness: true, if: -> { self.username.present? }     
   validates :email, presence: true, uniqueness: true
-  validates :phone_number,  :numericality => true,
-                     :length => { :minimum => 10, :maximum => 10, :message => 'Must be 10 numbers.' }
+  # validates :phone_number,  :numericality => true,
+                     # :length => { :minimum => 10, :maximum => 10, :message => 'Must be 10 numbers.' }
   letsrate_rateable
   letsrate_rater
   has_many :comments, as: :commentable  

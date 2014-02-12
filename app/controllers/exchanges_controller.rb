@@ -68,17 +68,15 @@ class ExchangesController < ApplicationController
           status: :created,
           location: @exchange
           }
-
           # FOR TWILIO
           @twilio_client = Twilio::REST::Client.new(
           TWILIO_SID,
           TWILIO_AUTH
           )
-   
           @twilio_client.account.sms.messages.create(
           :from => TWILIO_NUMBER,
-          :to => "+1#{2133213989}",
-          :body => "Greetings from SendAngel! Wheelie!",
+          :to => "+1#{current_user.phone_number}",
+          :body => "Wheelie. Your angel request has been created.",
           )
         else
           # FOR STRIPE
@@ -115,17 +113,29 @@ class ExchangesController < ApplicationController
   def confirm
     @exchange = Exchange.find(params[:id])
     @exchange.requester_id = current_user.id
-    @exchange.save!
-    redirect_to user_path(current_user)
   end
 
   def claim
     @exchange = Exchange.find(params[:id])
     @exchange.vendor_id = current_user.id
+    # binding.pry
     current_user.role = "vendor"
     current_user.save!
-    @exchange.save!
-    redirect_to exchange_path(@exchange)
+    @user = User.find_by(id: @exchange.user_id)
+    if @exchange.save
+      # FOR TWILIO
+      @twilio_client = Twilio::REST::Client.new(
+      TWILIO_SID,
+      TWILIO_AUTH
+      )
+      @twilio_client.account.sms.messages.create(
+      :from => TWILIO_NUMBER,
+      :to => "+1#{@user.phone_number}",
+      :body => "Wheelie. " + "#{current_user.username}" + " is on their way. " + "https://sendangel.in/users/#{@exchange.vendor_id}",
+      )  
+      redirect_to exchange_path(@exchange)
+
+    end
   end
 
   def destroy
