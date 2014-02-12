@@ -31,6 +31,8 @@ class Sale < ActiveRecord::Base
     begin
       save!
           # charge customer
+      exchange_user = User.find_by(id: @exchange.user_id)
+      @customer_id = exchange_user.stripe_customer_id    
       Stripe::Charge.create(
         :amount   => self.amount,
         :currency => "usd",
