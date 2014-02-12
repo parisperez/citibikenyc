@@ -24,9 +24,9 @@
             <% end %>
 
             <li><%= link_to "New Search", new_search_path %> </li>
-            <li><%= link_to "Saved Destinations", user_path(current_user) %></li>
+            <li><%= link_to "My Profile", user_path(current_user) %></li>
             <li><a href="http://citibikenyc.com/stations"target="_blank">Station Map</a></li>
-            <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+            <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
             <% end %>
           </ul>
   </div><!-- /.navbar-collapse -->
