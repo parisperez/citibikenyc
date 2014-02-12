@@ -9,8 +9,8 @@
   <div><%= f.label :image_url %><br />
   <%= f.text_field :image_url, :autofocus => true %></div>
 
-  <div><%= f.label :phone_number %><br />
-  <%= f.text_field :phone_number, :autofocus => true %></div>
+  <div><%= f.label :phone_number %><i>(no spaces or dashes)</i><br />
+  <%= f.text_field :phone_number, :placeholder => "example: 5552121234", :autofocus => true %></div>
 
   <div><%= f.label :email %><br />
   <%= f.email_field :email, :autofocus => true %></div>

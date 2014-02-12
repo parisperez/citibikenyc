@@ -145,8 +145,8 @@ ActiveRecord::Schema.define(version: 20131208230535567) do
     t.string   "last_name"
     t.string   "image_url"
     t.text     "headline"
-    t.string   "phone_number"
     t.string   "stripe_customer_id"
+    t.integer  "phone_number"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

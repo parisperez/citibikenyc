@@ -4,8 +4,8 @@ class ExchangesController < ApplicationController
   TWILIO_NUMBER = "+12132238913"
 
   def new
-    @exchange = Exchange.new
-    render :new
+      @exchange = Exchange.new  
+      render :new
   end
 
   def update
@@ -18,76 +18,80 @@ class ExchangesController < ApplicationController
   end
 
   def create
-    @exchanges = Exchange.all
-    @exchange = Exchange.new(exchange_params)  
-    @exchange.user = current_user
+    if current_user.phone_number != nil && current_user.stripe_customer_id != nil
+      @exchanges = Exchange.all
+      @exchange = Exchange.new(exchange_params)  
+      @exchange.user = current_user
 
-    time_choice = params[:time]
-    if time_choice == "1"
-      @exchange.time = Time.now
-    elsif time_choice == "2"
-      @exchange.time = Time.now + 15*60  
-    elsif time_choice == "3"
-      @exchange.time = Time.now + 30*60    
-    elsif time_choice == "4"
-      @exchange.time = Time.now + 45*60  
-    end
-
-    choice = params[":is_bike"]    
-    if choice == "true"
-      @exchange.is_bike = true
-    elsif 
-      choice == "false"
-      @exchange.is_bike = false
-    end
-
-    @coordinates = Geocoder.coordinates(@exchange.station)
-    unless @coordinates.nil?
-      @coordinates = { latitude: @coordinates[0], longitude: @coordinates[1] }
-      @all_citibike_stations = Citibikenyc.stations.values[2]
-
-      @station = @all_citibike_stations.min_by do |station|
-        distance_x = @coordinates[:longitude] - station["longitude"]
-        distance_y = @coordinates[:latitude] - station["latitude"]
-        Math.hypot( distance_x, distance_y )    
-      end 
-      @exchange.station = @station["label"]
-      @exchange.save   
-    end
-
-    # FOR STRIPE
-    respond_to do |format|
-      if @exchange.save
-        format.html {
-        redirect_to @exchange,
-        notice: 'Exchange was successfully created.'
-        }
-        format.json {
-        render json: @exchange,
-        status: :created,
-        location: @exchange
-        }
-
-        # FOR TWILIO
-        @twilio_client = Twilio::REST::Client.new(
-        TWILIO_SID,
-        TWILIO_AUTH
-        )
- 
-        @twilio_client.account.sms.messages.create(
-        :from => TWILIO_NUMBER,
-        :to => "+1#{2133213989}",
-        :body => "Greetings from SendAngel! Wheelie!",
-        )
-      else
-        # FOR STRIPE
-        format.html { render 'new' }
-        format.json {
-        render json: @exchange.errors,
-        status: :unprocessable_entity
-        }
+      time_choice = params[:time]
+      if time_choice == "1"
+        @exchange.time = Time.now
+      elsif time_choice == "2"
+        @exchange.time = Time.now + 15*60  
+      elsif time_choice == "3"
+        @exchange.time = Time.now + 30*60    
+      elsif time_choice == "4"
+        @exchange.time = Time.now + 45*60  
       end
-    end   
+
+      choice = params[":is_bike"]    
+      if choice == "true"
+        @exchange.is_bike = true
+      elsif 
+        choice == "false"
+        @exchange.is_bike = false
+      end
+
+      @coordinates = Geocoder.coordinates(@exchange.station)
+      unless @coordinates.nil?
+        @coordinates = { latitude: @coordinates[0], longitude: @coordinates[1] }
+        @all_citibike_stations = Citibikenyc.stations.values[2]
+
+        @station = @all_citibike_stations.min_by do |station|
+          distance_x = @coordinates[:longitude] - station["longitude"]
+          distance_y = @coordinates[:latitude] - station["latitude"]
+          Math.hypot( distance_x, distance_y )    
+        end 
+        @exchange.station = @station["label"]
+        @exchange.save   
+      end
+
+      # FOR STRIPE
+      respond_to do |format|
+        if @exchange.save
+          format.html {
+          redirect_to @exchange,
+          notice: 'Exchange was successfully created.'
+          }
+          format.json {
+          render json: @exchange,
+          status: :created,
+          location: @exchange
+          }
+
+          # FOR TWILIO
+          @twilio_client = Twilio::REST::Client.new(
+          TWILIO_SID,
+          TWILIO_AUTH
+          )
+   
+          @twilio_client.account.sms.messages.create(
+          :from => TWILIO_NUMBER,
+          :to => "+1#{2133213989}",
+          :body => "Greetings from SendAngel! Wheelie!",
+          )
+        else
+          # FOR STRIPE
+          format.html { render 'new' }
+          format.json {
+          render json: @exchange.errors,
+          status: :unprocessable_entity
+          }
+        end
+      end   
+    else    
+      redirect_to edit_user_registration_path(current_user.id), notice: 'Please verify your phone number and payment info to schedule an exchange.'
+    end 
   end
 
   def show

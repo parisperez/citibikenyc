@@ -5,9 +5,7 @@ class ApplicationController < ActionController::Base
 
   # include SessionsHelper
   include ExchangesHelper
-
   before_filter :configure_permitted_parameters, if: :devise_controller?
-
   protected
 
   def configure_permitted_parameters
