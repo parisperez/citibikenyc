@@ -25,12 +25,16 @@ class TransactionsController < ApplicationController
     @exchange = Exchange.find_by!(
       id: params[:id]
       )
+      # charge customer
+      exchange_user = User.find_by(id: @exchange.user_id)
+      stripe_customer_id = exchange_user.stripe_customer_id 
     # sale record
     sale = @exchange.sales.create(
       amount: @exchange.price,
       email: params[:email],
       stripe_token: params[:stripeToken],
       vendor_id: @exchange.vendor_id
+      customer_id: stripe_customer_id
       )
     sale.process!
     if sale.finished?

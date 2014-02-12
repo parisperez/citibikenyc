@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(version: 20131208230535567) do
     t.integer  "fee_amount"
     t.integer  "amount"
     t.integer  "vendor_id"
+    t.string   "customer_id"
   end
 
   add_index "sales", ["exchange_id"], name: "index_sales_on_exchange_id", using: :btree
