@@ -22,15 +22,13 @@ class Sale < ActiveRecord::Base
     end
   end
 
-  def get_customer_id
-    exchange_user = User.find_by(id: @exchange.user_id)
-    @customer_id = exchange_user.stripe_customer_id
-  end
-
   def charge_card
     begin
       save!
           # charge customer
+        @exchange = Exchange.find_by!(
+      id: params[:id]
+      )  
       exchange_user = User.find_by(id: @exchange.user_id)
       @customer_id = exchange_user.stripe_customer_id    
       Stripe::Charge.create(
