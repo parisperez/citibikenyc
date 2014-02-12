@@ -24,6 +24,25 @@
    <% end %> 
 </div>
 
+<% @exchanges.each do |exchange| %>  
+  <% if exchange.vendor_id == current_user.id && @exchange.status == nil %>
+  <h2>Vendor View: </h2> 
+  <p>Your currently scheduled exchange:</p>
+  <ul>
+    <li>Requester: <%= exchange.requester_id %></li>
+    <li>Station: <%= exchange.station %></li>
+    <li>Deliver by: <%= exchange.transform_time %></li>
+      <% if exchange.is_bike == true %>
+          <li>Your service: Deliver a Bike</li>
+      <% else %>
+         <li>Your service: Open up a Dock</li>
+      <% end %>
+      <!-- THIS SHOULD CHARGE THE CARD FROM THE SAVED CARD INFORMATION FILE OF EXCHANGE.USER_ID -->
+      <li><%= button_to "Mark as Completed", buy_path, :id => exchange.id, :method => :get %></li>
+    <% end  %> 
+  </ul>
+  <% end %>
+
 <% content_for :javascript_includes do %>
   <%= javascript_include_tag 'jquery.raty.js','letsrate.js'%>
 <% end %> 

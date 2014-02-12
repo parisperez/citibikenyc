@@ -38,7 +38,7 @@
 
   <% @comments.each do |comment| %>
     <% @commenters[0].each do |commenter| %> 
-      <% if comment.commenter_id == current_user.id %> 
+      <% if comment.commenter_id == current_user.id && @exchange.status == nil %> 
        <%= render "comments/commentsvendorview" %> 
       <% end %>  
     <% end %> 
