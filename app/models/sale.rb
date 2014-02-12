@@ -22,15 +22,26 @@ class Sale < ActiveRecord::Base
     end
   end
 
+  def get_customer_id
+    exchange_user = User.find_by(id: @exchange.user_id)
+    @customer_id = exchange_user.stripe_customer_id
+  end
+
   def charge_card
     begin
       save!
-      charge = Stripe::Charge.create(
-        amount: self.amount,
-        currency: "usd",
-        card: self.stripe_token,
-        description: self.email,
-        )
+          # charge customer
+      Stripe::Charge.create(
+        :amount   => @exchange.price
+        :currency => "usd",
+        :customer => @customer_id
+      )
+      # charge = Stripe::Charge.create(
+      #   amount: self.amount,
+      #   currency: "usd",
+      #   card: self.stripe_token,
+      #   description: self.email,
+      #   )
       balance = Stripe::BalanceTransaction.retrieve(charge.balance_transaction)
       self.update(
         stripe_id: charge.id,

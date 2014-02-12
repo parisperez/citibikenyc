@@ -18,7 +18,6 @@ class CustomersController < ApplicationController
     if current_user.save
       redirect_to user_path(current_user.id), notice: "Customer ID saved."
     end
-
   end
 
 end  
