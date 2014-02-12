@@ -33,7 +33,7 @@ class TransactionsController < ApplicationController
       amount: @exchange.price,
       email: params[:email],
       stripe_token: params[:stripeToken],
-      vendor_id: @exchange.vendor_id
+      vendor_id: @exchange.vendor_id,
       customer_id: stripe_customer_id
       )
     sale.process!
