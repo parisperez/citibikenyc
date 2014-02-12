@@ -25,6 +25,14 @@ class TransactionsController < ApplicationController
     @exchange = Exchange.find_by!(
       id: params[:id]
       )
+    # create customer object on stripe and save customer_id
+    customer = Stripe::Customer.create(
+    :card => token,
+    :description => params[:email]
+    )
+    current_user.stripe_customer_id = customer.id
+    current_user.save!
+    # sale record
     sale = @exchange.sales.create(
       amount: @exchange.price,
       email: params[:email],

@@ -1,4 +1,8 @@
 class CustomersController < ApplicationController
+
+  def new
+  end
+
   def create
     Stripe.api_key = "sk_test_tpq7oUZzfNAPjyzD5E8Nln0I"
 
@@ -10,6 +14,11 @@ class CustomersController < ApplicationController
       :card => token,
       :description => params[:email]
       )
+    current_user.stripe_customer_id = customer.id
+    if current_user.save
+      redirect_to user_path(current_user.id), notice: "Customer ID saved."
+    end
+
   end
 
 end  
