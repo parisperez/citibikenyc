@@ -32,7 +32,7 @@ class Sale < ActiveRecord::Base
       save!
           # charge customer
       Stripe::Charge.create(
-        :amount   => @exchange.price,
+        :amount   => self.amount,
         :currency => "usd",
         :customer => @customer_id
       )
