@@ -12,8 +12,6 @@
     <% if @exchange.vendor_id == nil and current_user.id == @exchange.user_id %>
     <li><%= link_to "Delete", exchange_path(@exchange), :method => :delete %> </li>
     <% end %>
- 
-    <!-- < button_to "buy", buy_path, :id => @exchange.id, :method => :get %> -->
 
     <% if @exchange.user_id != current_user.id && @exchange.vendor_id == nil %> 
         <li><%= button_to "Claim", claim_exchange_path, :id => @exchange.id, :method => :put %></li>

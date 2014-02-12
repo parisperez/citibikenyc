@@ -3,6 +3,15 @@
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
 
+  <div><%= f.label :headline %><br />
+  <%= f.text_field :headline, :autofocus => true %></div>
+
+  <div><%= f.label :image_url %><br />
+  <%= f.text_field :image_url, :autofocus => true %></div>
+
+  <div><%= f.label :phone_number %><br />
+  <%= f.text_field :phone_number, :autofocus => true %></div>
+
   <div><%= f.label :email %><br />
   <%= f.email_field :email, :autofocus => true %></div>
 
@@ -30,13 +39,13 @@
 <% end %>
 
 <h2>Let us pay you</h2>
-<li><%= link_to "Option 1. Connect Your Checking Account via Stripe", payments_path %></li>
+<!-- <li>< link_to "Option 1. Connect Your Checking Account via Stripe", payments_path %></li> -->
 <li><a href="https://connect.stripe.com/oauth/authorize?response_type=code&client_id=ca_3RZ0RC5ou8eIzbhddmzibN6kWg3fAtoI&scope=read_write&state=1234
-" class="btn btn-default">Option 2. Connect Your Stripe Account</a></li>
+" class="btn btn-default">Connect Your Stripe Account</a></li>
 
-<h2>For option 1: transfer your available funds</h2>
-<%= link_to "Collect Funds", transfers_path %>
-<%= button_to "Collect Funds", transfers_path, :method => :post %>
+<!-- <h2>For option 1: transfer your available funds</h2>
+< link_to "Collect Funds", transfers_path %>
+< button_to "Collect Funds", transfers_path, :method => :post %> -->
 
 <h3>Cancel my account</h3>
 

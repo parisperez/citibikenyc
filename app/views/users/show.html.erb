@@ -1,12 +1,24 @@
-<%= rating_for @user %>
+<ul>
+  <li><%= @user.username %></li>
+  <li><img class="profile-image" src="<%= @user.image_url %>" alt="profile image"></li>
+  <li>"<%= @user.headline %>"</li>
+  <li><%= rating_for @user %></li>
+</ul>
 
 <% @exchanges.each do |exchange| %>  
   <% if exchange.vendor_id == current_user.id && exchange.status == nil %>
-  <h2><%= link_to "Go to your current exchange", exchange_path(exchange.id) %></h2>
+  <h2><%= link_to "My current exchange", exchange_path(exchange.id) %></h2>
   <% end %>
 <% end %>
+
+<% @exchanges.each do |exchange| %>  
+  <% if exchange.user_id == current_user.id && exchange.status == nil %>
+  <h2><%= link_to "My current exchange", exchange_path(exchange.id) %></h2>
+  <% end %>
+<% end %>
+
 <br>
-<h2>Your Saved Destinations:</h2>
+<h2>My Saved Destinations:</h2>
   <ul>
     <% if @user.favorites.length != 0 %>
       <% @user.favorites.each do |favorite| %>
