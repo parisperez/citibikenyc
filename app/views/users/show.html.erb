@@ -25,7 +25,7 @@
 </div>
 
 <% @exchanges.each do |exchange| %>  
-  <% if exchange.vendor_id == current_user.id && @exchange.status == nil %>
+  <% if exchange.vendor_id == current_user.id && exchange.status == nil %>
   <h2>Vendor View: </h2> 
   <p>Your currently scheduled exchange:</p>
   <ul>
