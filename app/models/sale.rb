@@ -26,7 +26,7 @@ class Sale < ActiveRecord::Base
     begin
       save!   
       Stripe::Charge.create(
-        :amount   => self.amount,
+        :amount   => self.amount * 100,
         :currency => "usd",
         :customer => self.customer_id
       )

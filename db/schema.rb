@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(version: 20131208230535567) do
     t.integer  "fee_amount"
     t.integer  "vendor_id"
     t.string   "customer_id"
-    t.decimal  "amount",          precision: 8, scale: 2
+    t.integer  "amount"
   end
 
   add_index "sales", ["exchange_id"], name: "index_sales_on_exchange_id", using: :btree

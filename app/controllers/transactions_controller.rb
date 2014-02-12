@@ -30,7 +30,7 @@ class TransactionsController < ApplicationController
       stripe_customer_id = exchange_user.stripe_customer_id 
     # sale record
     sale = @exchange.sales.create(
-      amount: @exchange.price * 100,
+      amount: @exchange.price,
       email: params[:email],
       stripe_token: params[:stripeToken],
       vendor_id: @exchange.vendor_id,
