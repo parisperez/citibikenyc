@@ -1,4 +1,7 @@
 class ExchangesController < ApplicationController
+
+  self.before_action( :set_exchange, :authorized!, except: [:new, :create, :index] )
+
   TWILIO_SID = 'AC19f56d8782421ab57fe7ac71d998b714'
   TWILIO_AUTH = 'e6d037c71b9924019d62160d15949bb7'
   TWILIO_NUMBER = "+12132238913"
@@ -132,7 +135,7 @@ class ExchangesController < ApplicationController
       @twilio_client.account.sms.messages.create(
       :from => TWILIO_NUMBER,
       :to => "+1#{@user.phone_number}",
-      :body => "Wheelie. " + "#{current_user.username}" + " is on their way. " + "https://sendangel.in/users/#{@exchange.vendor_id}",
+      :body => "Wheelie. " + "#{current_user.username}" + " is on their way. " + "https://sendangel.in/exchanges/#{@exchange.id}",
       )  
       redirect_to exchange_path(@exchange)
 
@@ -152,6 +155,17 @@ class ExchangesController < ApplicationController
 
   def exchange_params
       params.require(:exchange).permit(:description, :name, :permalink, :price, :file, :is_bike, :date, :time, :price, :station)
+  end
+
+  def set_exchange
+    @exchange = Exchange.find(params[:id])
+  end
+
+  # prevents users from tampering or seeing other user exchanges. 
+  def authorized!
+    unless @exchange.user_id == current_user.id || @exchange.vendor_id == current_user.id || @exchange.vendor_id == nil
+      redirect_to user_path(current_user.id)
+    end
   end
 
 end

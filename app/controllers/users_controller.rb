@@ -68,11 +68,11 @@ private
   end
 
 # prevents users from tampering or seeing with other user accounts. is the user that's logged in, the same as the resource they're trying to access? if not, send them back to their page.
-  # def authorized!
-  #   unless @user.id == session[:user_id]
-  #     redirect_to user_path(session[:user_id])
-  #   end
-  # end
+  def authorized!
+    unless @user.id == session[:user_id]
+      redirect_to user_path(session[:user_id])
+    end
+  end
 end
 
 
