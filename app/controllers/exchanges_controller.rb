@@ -135,7 +135,7 @@ class ExchangesController < ApplicationController
       @twilio_client.account.sms.messages.create(
       :from => TWILIO_NUMBER,
       :to => "+1#{@user.phone_number}",
-      :body => "Your angel: " + "#{current_user.username}. Phone: " + "#{current_user.phone_number}. Address: " + "#{@exchange.station}",
+      :body => "Your angel: " + "#{current_user.username}. Phone: " + "#{current_user.phone_number}. Address: " + "#{@exchange.station}. " + "https://sendangel.in/exchanges/#{@exchange.id}",
       )  
       redirect_to exchange_path(@exchange)
 
