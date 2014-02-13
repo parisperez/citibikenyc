@@ -1,7 +1,7 @@
 <ul>
   <li><%= @user.username %></li>
   <li><img class="profile-image" src="<%= @user.image_url %>" alt="profile image"></li>
-  <% unless @user.headline.length == 0 %>
+  <% unless @user.headline == nil %>
     <li><%= "'" + "#{@user.headline}" + "'" %></li>
   <% end %>
   <li><%= rating_for @user %></li>
