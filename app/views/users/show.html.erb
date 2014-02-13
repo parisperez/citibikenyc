@@ -1,6 +1,6 @@
 <ul>
   <li><%= @user.username %></li>
-  <li><img class="profile-image" src="<%= @user.image_url %>" alt="profile image"></li>
+  <li><img class="profile-image" src="<%= @user.image_url %>" alt="you don't have a profile image yet."></li>
   <% unless @user.headline == nil %>
     <li><%= "'" + "#{@user.headline}" + "'" %></li>
   <% end %>

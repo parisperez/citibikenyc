@@ -37,13 +37,13 @@
 <h2>MARKETPLACE</h2>
 
 <h2>Save your payment info to start using SendAngel</h2>
-<% if current_user.stripe_customer_id.length == 0 %>
+<% if current_user.stripe_customer_id == nil %>
   <%= form_tag new_customer_path, :method => :get do %>
   <li><%= submit_tag "Enter Your Payment Method", :class => 'btn btn-default' %></li>
   <% end %>
 <% end %>
 
-<% if current_user.stripe_customer_id.length != 0 %>
+<% if current_user.stripe_customer_id != nil %>
   <%= form_tag new_customer_path, :method => :get do %>
   <li><%= submit_tag "Update Your Payment Method", :class => 'btn btn-default' %></li>
   <% end %>
