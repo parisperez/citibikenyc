@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
        :recoverable, :rememberable, :trackable, :validatable, :confirmable
-  validates :username, uniqueness: true, if: -> { self.username.present? }     
+  validates :username, presence: true, uniqueness: true, if: -> { self.username.present? }     
   validates :email, presence: true, uniqueness: true
   # validates :phone_number,  :numericality => true,
                      # :length => { :minimum => 10, :maximum => 10, :message => 'Must be 10 numbers.' }
