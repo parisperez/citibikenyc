@@ -18,11 +18,10 @@ class ExchangesController < ApplicationController
   end
 
   def create
-    if current_user.phone_number != nil && current_user.stripe_customer_id != nil
+    if current_user.phone_number != nil && current_user.stripe_customer_id.length != 0 && current_user.username.length != 0
       @exchanges = Exchange.all
       @exchange = Exchange.new(exchange_params)  
       @exchange.user = current_user
-
       time_choice = params[:time]
       if time_choice == "1"
         @exchange.time = Time.now
@@ -94,7 +93,8 @@ class ExchangesController < ApplicationController
 
   def show
     @exchange = Exchange.find(params[:id])
-    @user = current_user
+    @vendor = User.find_by(id: @exchange.vendor_id)
+    @user = User.find_by(id: @exchange.user_id)
     @commentable = @exchange
     @comments = @commentable.comments
     @comment = Comment.new
@@ -102,6 +102,7 @@ class ExchangesController < ApplicationController
     @comments.each do |comment|   
       @commenters << User.where(id: [comment.commenter_id])
     end
+    # binding.pry
     render :show
   end
 
@@ -118,11 +119,11 @@ class ExchangesController < ApplicationController
   def claim
     @exchange = Exchange.find(params[:id])
     @exchange.vendor_id = current_user.id
-    # binding.pry
     current_user.role = "vendor"
     current_user.save!
     @user = User.find_by(id: @exchange.user_id)
     if @exchange.save
+      # binding.pry
       # FOR TWILIO
       @twilio_client = Twilio::REST::Client.new(
       TWILIO_SID,

@@ -1,6 +1,22 @@
 <div class="well">
-  <h4></h4>
+  
   <ul>
+    <% if current_user.id == @exchange.user_id && @exchange.vendor_id != nil %>
+      <li>Your Angel's Info</li>
+      <li><img class="profile-image" src="<%= @vendor.image_url %>" alt="profile image"></li>
+      <li>username: <%= @vendor.username %></li>
+      <li><%= rating_for @vendor %></li>
+      <li>phone: <%= @vendor.phone_number%></li>
+    <% end %>
+    <% if current_user.id == @exchange.vendor_id %>
+      <li>Your Customer's Info</li>
+      <% if @user.image_url.length != 0 %>
+        <li><img class="profile-image" src="<%= @user.image_url %>" alt="profile image"></li>
+      <% end %>
+      <li>username: <%= @user.username %></li>
+      <li><%= rating_for @user %></li>
+      <li>phone: <%= @user.phone_number%></li>
+    <% end %>
     <li>Station: <%= @exchange.station %></li>
     <li>Time: <%= @exchange.transform_time %></li>
     <li>Price: <%= number_to_currency(@exchange.price, :unit => "$")  %></li>

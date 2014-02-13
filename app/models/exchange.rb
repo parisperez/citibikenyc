@@ -23,7 +23,7 @@ class Exchange < ActiveRecord::Base
   end
 
   def transform_time
-    return self.time.httpdate.in_time_zone('Eastern Time (US & Canada)')
+    return self.time.in_time_zone('Eastern Time (US & Canada)').httpdate
   end
 
   # def set_vendor(exchange, id)
