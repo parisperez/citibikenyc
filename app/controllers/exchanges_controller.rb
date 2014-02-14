@@ -37,7 +37,7 @@ class ExchangesController < ApplicationController
   end
 
   def create
-    if current_user.phone_number != nil && current_user.stripe_customer_id.length != 0 && current_user.username.length != 0
+    if current_user.phone_number != nil && current_user.stripe_customer_id != nil && current_user.username.length != 0
       @exchanges = Exchange.all
       @exchange = Exchange.new(exchange_params)  
       @exchange.user = current_user

@@ -1,17 +1,12 @@
-<div class="container">
-    <div class="panel panel-default">
-      <div class="panel-heading">  
-        <h7>Search for the nearest available Citibike and open Citibike dock:</h7>  
-      </div>
-         <div class="panel-body" id="search-body">
-            <%= form_tag searches_path, :method => :post do %>  
-            <%= text_field_tag :address, params[:address], placeholder: 'street city and zip...', class: "form-control", id: "new-search" %>  
-            <%= submit_tag "Go", :class => 'btn btn-default' %>   
-            <% end %>  
-         </div> 
-    </div>
+<h3>Search for the nearest available Citibike and open Citibike dock:</h3> 
+<div id="search-body">  
+    <%= form_tag searches_path, :method => :post do %>  
+    <%= text_field_tag :address, params[:address], placeholder: 'street city and zip...', class: "form-control", id: "new-search-field" %>  
+    <%= submit_tag "Go", :class => 'btn btn-default' %>   
+    <% end %>  
+ </div> 
 
-    <div class="saved">
-      <h6><%= link_to "Go to Saved Destinations", user_path(current_user) %></h6>
-    </div>
+<div class="saved">
+  <h2><%= link_to "Go to Saved Destinations", user_path(current_user) %></h2>
 </div>
+

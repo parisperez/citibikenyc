@@ -1,8 +1,8 @@
-<ul>
-  <li><%= @user.username %></li>
-  <li><img class="profile-image" src="<%= @user.image_url %>" alt="you don't have a profile image yet."></li>
+<ul id="user-profile">
+  <li id="profile-info"><%= @user.username %></li>
+  <li id="profile-info"><img class="img-circle" id="profile-image" src="<%= @user.image_url %>" alt="you don't have a profile image yet."></li>
   <% unless @user.headline == nil %>
-    <li><%= @user.headline %></li>
+    <li id="profile-info"><%= @user.headline %></li>
   <% end %>
 </ul>
 
@@ -19,28 +19,31 @@
 <% end %>
 
 <br>
-<h2>My Saved Destinations:</h2>
+<div id="favorites">
+<h2 id="faves-headeline">My Saved Destinations:</h2>
   <ul>
     <% if @user.favorites.length != 0 %>
       <% @user.favorites.each do |favorite| %>
-      <li><%= favorite.address %></li>
 
       <!-- NEW SEARCH -->
       <%= form_tag searches_path, :method => :post do %>
-      <li class="favorites"><%= submit_tag "Search", :class => 'btn btn-default', :name => :address %></li>
+      <li class="favorites"><%= submit_tag "#{favorite.address}", :class => 'btn btn-default', :id => "favorite-links", :name => :address %></li>
       <% end %>
       <% end %>
       <% else %>
       <p>You haven't saved any destinations yet.</p>  
     <% end %>
   </ul>
+</div>
 
-<div class="new_search">
-  <h2><%= link_to "New Search", new_search_path %> </h2>
-  <h2><%= link_to "Schedule an Exchange", new_exchange_path %> </h2> 
+<div class="new-search">
+  <ul>
+  <li><%= link_to "New Search", new_search_path %> </li>
+  <li><%= link_to "Schedule an Exchange", new_exchange_path %> </li> 
     <% if current_user.role == "vendor" %> 
-  <h2> <%= link_to "All Exchanges", exchanges_path %> </h2> 
+  <li> <%= link_to "All Exchanges", exchanges_path %> </li> 
    <% end %> 
+  </ul> 
 </div>
 
 

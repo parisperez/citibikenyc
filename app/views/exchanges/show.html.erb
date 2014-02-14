@@ -13,6 +13,9 @@
       <li>Your Angel's Info</li>
       <li><img class="profile-image" src="<%= @vendor.image_url %>" alt="profile image"></li>
       <li>username: <%= @vendor.username %></li>
+      <% unless @vendor.headline == nil %>
+      <li id="profile-info"><%= @vendor.headline %></li>
+  <% end %>
       <li><%= rating_for @vendor %></li>
       <li>phone: <%= @vendor.phone_number%></li>
     <% end %>
@@ -25,6 +28,9 @@
       <% end %>
       <li>username: <%= @user.username %></li>
       <li><%= rating_for @user %></li>
+      <% unless @user.headline == nil %>
+    <li id="profile-info"><%= @user.headline %></li>
+    <% end %>
       <li>phone: <%= @user.phone_number%></li>
     <% end %>
 

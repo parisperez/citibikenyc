@@ -1,9 +1,4 @@
-<div class="panel panel-default">
-  <div class="panel-heading">  
-    <h1>SEND ANGEL IN:</h1>
-  </div>
-
-<div class="panel-body" id="new-exchange">
+ <h2 id="exchanges-headline">SEND ANGEL IN:</h2>
   <%= form_for [@exchange], :action => :create do |f| %>
 
   <div class="form-group">
@@ -12,8 +7,8 @@
   </div> 
 
   <div class="form-group">
-    <%= f.label :station, "Station nearest to:" %>
-    <%= f.text_field :station, :placeholder => "Tell me an address...", :value => params[:station], class: "form-control"  %>
+    <%= f.label :station, "Station nearest to:", id: "label" %>
+    <%= f.text_field :station, :placeholder => "Tell me an address...", :value => params[:station], class: "form-control", id: "exchange-address"  %>
   </div>
   
 <!--   <div class="form-group">
@@ -37,19 +32,18 @@
   </div>  -->
 
   <div class="radio">
-      <label>
-         <%= "bike" %> 
-         <input type="radio" class="input_radio" name= ":is_bike" value= <%= @exchange.is_bike = true %>>
+      <label id="radio-label">
+          <!-- "bike" %>  -->
+         <input type="radio" id="input_radio" name= ":is_bike" value= <%= @exchange.is_bike = true %>>bike
       </label>
    </div>
    <div class="radio">    
-      <label>
-        <%= "dock" %> 
-        <input type="radio" class="input_radio" name=":is_bike" value= <%= @exchange.is_bike = false %>>
+      <label id="radio-label">
+         <!-- "dock" %>  -->
+        <input type="radio" id="input_radio" name=":is_bike" value= <%= @exchange.is_bike = false %>>dock
       </label>
   </div>  
-    <%= f.submit "Send Angel!", class: "btn btn-default" %>
+    <%= f.submit "Send Angel!", class: "btn btn-default", id: "signup-btn" %>
     <% end %> 
-  </div>
-</div>
+
 

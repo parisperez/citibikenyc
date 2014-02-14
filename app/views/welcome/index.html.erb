@@ -1,9 +1,7 @@
-<div class="well"> 
-  <ul>
-    <img src="http://www.everythingaction.com/wp-content/uploads/2011/09/rad1986.jpg" width= "370px" height= "200px"alt="send me an angel">
-    <h1>SEND ME AN ANGEL</h1>
-    <h2>A healthy way to hustle on an NYC Citibike.</h2>
-   </ul> 
+<div class="well" id="welcome-well"> 
+    <img src="http://www.everythingaction.com/wp-content/uploads/2011/09/rad1986.jpg" id="rad-image" width= "370px" height= "200px"alt="send me an angel">
+    <h1 id="welcome-headline">SEND ME AN ANGEL</h1>
+    <h2 id="welcome-subhead">A healthy way to hustle in NYC.</h2>
 </div>    
 
     <% unless user_signed_in? %> 
@@ -14,7 +12,7 @@
 
 
     <% if user_signed_in? %>
-      <h2>
+      <h2 id-"welcome-signin">
       <%= link_to "New Search", new_search_path %> |
       <%= link_to "Log out", destroy_user_session_path, method: :delete %>
       </h2> 
