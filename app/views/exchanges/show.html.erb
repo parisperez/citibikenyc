@@ -71,11 +71,11 @@
   <% end %> 
 
   <% if current_user.id == @exchange.user_id && @exchange.status == "completed" %>
-    <li><%= button_to "Save Rating", rated_exchange_path, :id => @exchange.id, :method => :put %></li>
+    <li><%= button_to "Continue", rated_exchange_path, :id => @exchange.id, :method => :put %></li>
   <% end %>
 
   <% if current_user.id == @exchange.vendor_id && @exchange.status == "completed" %>
-    <li><%= button_to "Save Rating", rated_exchange_path, :id => @exchange.id, :method => :put %></li>
+    <li><%= button_to "Continue", rated_exchange_path, :id => @exchange.id, :method => :put %></li>
   <% end %>
 
 <% content_for :javascript_includes do %>
