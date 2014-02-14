@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     exchanges = Exchange.where(user_id: current_user.id)
     last_exchange = exchanges.last 
-    if last_exchange.rated.length == 0
+    if last_exchange.rated != "yes"
       exchange_path(last_exchange)
     end
     user_path(current_user.id)
