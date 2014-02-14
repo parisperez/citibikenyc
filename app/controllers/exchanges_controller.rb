@@ -130,10 +130,12 @@ class ExchangesController < ApplicationController
     render :index
   end
 
-  # def confirm
-  #   @exchange = Exchange.find(params[:id])
-  #   @exchange.requester_id = current_user.id
-  # end
+  def rated
+    @exchange = Exchange.find(params[:id])
+    @exchange.rated = "yes"
+    @exchange.save!
+    redirect_to user_path(current_user)
+  end
 
   def claim
     @exchange = Exchange.find(params[:id])
@@ -142,7 +144,6 @@ class ExchangesController < ApplicationController
     current_user.save!
     @user = User.find_by(id: @exchange.user_id)
     if @exchange.save
-      # binding.pry
       # FOR TWILIO
       @twilio_client = Twilio::REST::Client.new(
       TWILIO_SID,

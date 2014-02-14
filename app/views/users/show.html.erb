@@ -4,7 +4,6 @@
   <% unless @user.headline == nil %>
     <li><%= @user.headline %></li>
   <% end %>
-  <li><%= rating_for @user %></li>
 </ul>
 
 <% @exchanges.each do |exchange| %>  
@@ -44,9 +43,6 @@
    <% end %> 
 </div>
 
-<% content_for :javascript_includes do %>
-  <%= javascript_include_tag 'jquery.raty.js','letsrate.js'%>
-<% end %> 
 
   
 

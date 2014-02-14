@@ -25,7 +25,7 @@ Citibike::Application.routes.draw do
   resources :exchanges  do
     member do
       put 'claim'
-      put 'confirm'
+      put 'rated'
     end
     resources :comments
   end

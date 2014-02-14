@@ -1,4 +1,12 @@
 <div class="well">
+
+<!-- please rate -->
+  <% if current_user == @exchange.user_id && @exchange.status == "completed" %>
+    <h2>Please rate your angel:</h2>
+  <% end %>
+    <% if current_user == @exchange.vendor_id && @exchange.status == "completed" %>
+    <h2>Please rate your client:</h2>
+  <% end %>
   
   <ul>
     <% if current_user.id == @exchange.user_id && @exchange.vendor_id != nil %>
@@ -8,6 +16,8 @@
       <li><%= rating_for @vendor %></li>
       <li>phone: <%= @vendor.phone_number%></li>
     <% end %>
+
+
     <% if current_user.id == @exchange.vendor_id %>
       <li>Your Customer's Info</li>
       <% if @user.image_url.length != 0 %>
@@ -17,6 +27,17 @@
       <li><%= rating_for @user %></li>
       <li>phone: <%= @user.phone_number%></li>
     <% end %>
+
+    <% if current_user == @exchange.user_id && @exchange.status == "completed" %>
+      <li><%= link_to "Save Rating", rated_exchange_path, :id => @exchange.id, :method => :put %></li>
+    <% end %>
+
+    <% if current_user == @exchange.vendor_id && @exchange.status == "completed" %>
+      <li><%= link_to "Save Rating", rated_exchange_path, :id => @exchange.id, :method => :put %></li>
+    <% end %>
+
+<!-- exchange info -->
+
     <li>Station: <%= @exchange.station %></li>
     <li>Time: <%= @exchange.transform_time %></li>
     <li>Price: <%= number_to_currency(@exchange.price, :unit => "$")  %></li>
@@ -36,7 +57,6 @@
     <% if current_user.id == @exchange.vendor_id %> 
         <li><%= button_to "Complete", buy_path, :id => @exchange.id, :method => :post %></li>
     <% end %> 
-
   </ul>
 </div>
 
