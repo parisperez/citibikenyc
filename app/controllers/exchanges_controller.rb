@@ -137,6 +137,13 @@ class ExchangesController < ApplicationController
     redirect_to user_path(current_user)
   end
 
+  def rated_vendor
+    @exchange = Exchange.find(params[:id])
+    @exchange.rated_by_vendor = "yes"
+    @exchange.save!
+    redirect_to user_path(current_user)
+  end
+
   def claim
     @exchange = Exchange.find(params[:id])
     @exchange.vendor_id = current_user.id

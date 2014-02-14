@@ -46,7 +46,7 @@
         <li><%= button_to "Claim", claim_exchange_path, :id => @exchange.id, :method => :put %></li>
     <% end %> 
 
-    <% if current_user.id == @exchange.vendor_id %> 
+    <% if current_user.id == @exchange.vendor_id && @exchange.status != "completed" %> 
         <li><%= button_to "Complete", buy_path, :id => @exchange.id, :method => :post %></li>
     <% end %> 
   </ul>
@@ -75,7 +75,7 @@
   <% end %>
 
   <% if current_user.id == @exchange.vendor_id && @exchange.status == "completed" %>
-    <li><%= button_to "Continue", rated_exchange_path, :id => @exchange.id, :method => :put %></li>
+    <li><%= button_to "Continue", rated_vendor_exchange_path, :id => @exchange.id, :method => :put %></li>
   <% end %>
 
 <% content_for :javascript_includes do %>

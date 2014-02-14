@@ -18,10 +18,10 @@ class ApplicationController < ActionController::Base
     vendor_exchanges = Exchange.where(vendor_id: current_user.id)
     last_exchange = exchanges.last 
     vendor_last_exchange = vendor_exchanges.last
-    if exchanges.length != 0 && vendor_last_exchange.rated != "yes"
+    if exchanges.length != 0 && last_exchange.rated != "yes" && last_exchange.status == "completed"
       exchange_path(last_exchange.id)
-    elsif exchanges.length != 0 && last_exchange.rated != "yes"
-      exchange_path(last_exchange.id)
+    elsif vendor_exchanges.length != 0 && vendor_last_exchange.rated_by_vendor != "yes" && vendor_last_exchange.status == "completed"
+      exchange_path(vendor_last_exchange.id)
     else
       user_path(current_user.id)  
     end

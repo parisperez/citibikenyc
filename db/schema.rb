@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20131208230535567) do
     t.decimal  "price",             precision: 8, scale: 2
     t.string   "status"
     t.string   "rated"
+    t.string   "rated_by_vendor"
   end
 
   create_table "favorites", force: true do |t|

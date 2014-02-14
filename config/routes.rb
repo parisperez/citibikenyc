@@ -26,6 +26,7 @@ Citibike::Application.routes.draw do
     member do
       put 'claim'
       put 'rated'
+      put 'rated_vendor'
     end
     resources :comments
   end
