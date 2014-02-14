@@ -41,7 +41,7 @@ Citibike::Application.routes.draw do
   end
   
   get 'account' => 'welcome#account'
+  get 'about' => 'welcome#about'
   root 'welcome#index'
-  # resource :session, only: [:destroy, :create, :new]
 
 end

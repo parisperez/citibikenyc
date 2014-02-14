@@ -8,4 +8,8 @@ class WelcomeController < ApplicationController
     render :account
   end
 
+  def about
+    render :about
+  end
+
 end  
