@@ -1,10 +1,10 @@
 <div class="well">
 
 <!-- please rate -->
-  <% if current_user == @exchange.user_id && @exchange.status == "completed" %>
+  <% if current_user.id == @exchange.user_id && @exchange.status == "completed" %>
     <h2>Please rate your angel:</h2>
   <% end %>
-    <% if current_user == @exchange.vendor_id && @exchange.status == "completed" %>
+    <% if current_user.id == @exchange.vendor_id && @exchange.status == "completed" %>
     <h2>Please rate your client:</h2>
   <% end %>
   
@@ -26,14 +26,6 @@
       <li>username: <%= @user.username %></li>
       <li><%= rating_for @user %></li>
       <li>phone: <%= @user.phone_number%></li>
-    <% end %>
-
-    <% if current_user == @exchange.user_id && @exchange.status == "completed" %>
-      <li><%= link_to "Save Rating", rated_exchange_path, :id => @exchange.id, :method => :put %></li>
-    <% end %>
-
-    <% if current_user == @exchange.vendor_id && @exchange.status == "completed" %>
-      <li><%= link_to "Save Rating", rated_exchange_path, :id => @exchange.id, :method => :put %></li>
     <% end %>
 
 <!-- exchange info -->
@@ -77,6 +69,14 @@
       <% end %>  
     <% end %> 
   <% end %> 
+
+  <% if current_user.id == @exchange.user_id && @exchange.status == "completed" %>
+    <li><%= button_to "Save Rating", rated_exchange_path, :id => @exchange.id, :method => :put %></li>
+  <% end %>
+
+  <% if current_user.id == @exchange.vendor_id && @exchange.status == "completed" %>
+    <li><%= button_to "Save Rating", rated_exchange_path, :id => @exchange.id, :method => :put %></li>
+  <% end %>
 
 <% content_for :javascript_includes do %>
   <%= javascript_include_tag 'jquery.raty.js','letsrate.js'%>
