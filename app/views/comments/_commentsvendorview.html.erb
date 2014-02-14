@@ -3,16 +3,19 @@
     <table class="table" id="comments">
       <% @comments.each do |comment| %>
           <% @commenters[0].each do |commenter| %> 
+            <% if comment.commenter_id == current_user.id %> 
             <tr class="commenter-name">
-              <td class="commenter-name"><%= commenter.username %></td>
+              <td class="commenter-name"><%= current_user.username %></td>
             </tr>
             <tr id="comment-li">
-                <td class="commenter-td"><img class="commenter" src="<%= commenter.image_url %>" alt="profile image">
+                <td class="commenter-td"><img class="commenter" src="<%= current_user.image_url %>" alt="profile image">
                 </td>
               <td class="comment-content-td"><%= number_to_currency(comment.counterprice, :unit => "$") %></td>
               <td class="comment-content-td"><%= button_to "Delete", exchange_comment_path(@exchange, comment), :method => :delete %></td>
             </tr>
+            <% end %>
          <% end %>
       <% end %>
+      <!-- binding.pry %> -->
     </table>
 </div>    

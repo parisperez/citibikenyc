@@ -2,7 +2,8 @@
   <h3>COUNTER OFFERS</h3>
     <table class="table" id="comments">
       <% @comments.each do |comment| %>
-          <% @commenters[0].each do |commenter| %> 
+         <% commenter = User.find_by(id: comment.commenter_id) %>
+           <!-- @commenters[0].each do |commenter| %>  -->
             <tr class="commenter-name">
               <td class="commenter-name"><%= commenter.username %></td>
             </tr>
@@ -12,7 +13,7 @@
               <td class="comment-content-td"><%= number_to_currency(comment.counterprice, :unit => "$") %></td>
               <td class="comment-content-td"><%= button_to "award", exchange_path, :method => :put %></td>
             </tr>
-         <% end %>
+          <!-- end %> -->
       <% end %>
     </table>
 </div>    

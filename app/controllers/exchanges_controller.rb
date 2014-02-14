@@ -17,7 +17,23 @@ class ExchangesController < ApplicationController
     @exchange.vendor_id = @comment.commenter_id
     @exchange.price = @comment.counterprice
     @exchange.save
+    @vendor = User.find_by(id: @exchange.vendor_id)
     redirect_to exchange_path(@exchange)
+     # FOR TWILIO
+      @twilio_client = Twilio::REST::Client.new(
+      TWILIO_SID,
+      TWILIO_AUTH
+      )
+      @twilio_client.account.sms.messages.create(
+      :from => TWILIO_NUMBER,
+      :to => "+1#{current_user.phone_number}",
+      :body => "Your angel: " + "#{@vendor.username}. Phone: " + "#{@vendor.phone_number}. Address: " + "#{@exchange.station}. " + "Click here: www.sendangel.in/exchanges/#{@exchange.id}",
+      )  
+      @twilio_client.account.sms.messages.create(
+      :from => TWILIO_NUMBER,
+      :to => "+1#{@vendor.phone_number}",
+      :body => "Your client: " + "#{current_user.username}. Phone: " + "#{current_user.phone_number}. Address: " + "#{@exchange.station}. " + "Click here: www.sendangel.in/exchanges/#{@exchange.id}",
+      ) 
   end
 
   def create
@@ -114,10 +130,10 @@ class ExchangesController < ApplicationController
     render :index
   end
 
-  def confirm
-    @exchange = Exchange.find(params[:id])
-    @exchange.requester_id = current_user.id
-  end
+  # def confirm
+  #   @exchange = Exchange.find(params[:id])
+  #   @exchange.requester_id = current_user.id
+  # end
 
   def claim
     @exchange = Exchange.find(params[:id])
