@@ -12,10 +12,11 @@
         <% else %>
            <li>Service: Open up a Dock</li>
         <% end %>
-      <li><%= button_to "select", exchange_path(exchange), :class => 'btn-btn-success', :method => :get %></li> 
+      <li><%= button_to "select", exchange_path(exchange), :class => 'btn btn-success', :id => 'select-btn', :method => :get %></li> 
     <% end %>
+    </ul>
   <% end %>
-  </ul>
+  
 
 </div>
 

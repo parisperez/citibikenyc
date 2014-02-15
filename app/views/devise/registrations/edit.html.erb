@@ -1,37 +1,37 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2 id="account-update-headline">Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :username %><br />
-  <%= f.text_field :username, :autofocus => true %></div>
+  <div><%= f.label :username, id: "label" %><br />
+  <%= f.text_field :username, class: "form-control", :autofocus => true %></div>
 
-  <div><%= f.label :headline %><br />
-  <%= f.text_field :headline, :autofocus => true %></div>
+  <div><%= f.label :headline, id: "label" %><br />
+  <%= f.text_field :headline, class: "form-control", id: "headline-field", :autofocus => true %></div>
 
-  <div><%= f.label :image_url %><br />
-  <%= f.text_field :image_url, :autofocus => true %></div>
+  <div><%= f.label :image_url, id: "label" %><br />
+  <%= f.text_field :image_url, class: "form-control", id: "img-field", :autofocus => true %></div>
 
-  <div><%= f.label :phone_number %><i>(no spaces or dashes)</i><br />
-  <%= f.text_field :phone_number, :placeholder => "example: 5552121234", :autofocus => true %></div>
+  <div><%= f.label :phone_number, id: "label" %><i>(no spaces or dashes)</i><br />
+  <%= f.text_field :phone_number, class: "form-control", :placeholder => "example: 5552121234", :autofocus => true %></div>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+  <div><%= f.label :email, id: "label" %><br />
+  <%= f.email_field :email, class: "form-control", id: "email-field", :autofocus => true %></div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password, :autocomplete => "off" %></div>
+  <div><%= f.label :password, id: "label" %> <i>(leave blank if you don't want to change it)</i><br />
+  <%= f.password_field :password, class: "form-control", :autocomplete => "off" %></div>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+  <div><%= f.label :password_confirmation, id: "label" %><br />
+  <%= f.password_field :password_confirmation, class: "form-control" %></div>
 
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password %></div>
+  <div><%= f.label :current_password, id: "label" %> <i>(we need your current password to confirm your changes)</i><br />
+  <%= f.password_field :current_password, class: "form-control", id: "password" %></div>
 
-  <div><%= f.submit "Update" %></div>
+  <div><%= f.submit "Update", class: "btn btn-success", id: "profile-update-btn" %></div>
 <% end %>
 
 <h2>MARKETPLACE</h2>
@@ -39,20 +39,19 @@
 <h2>Save your payment info to start using SendAngel</h2>
 <% if current_user.stripe_customer_id == nil %>
   <%= form_tag new_customer_path, :method => :get do %>
-  <li><%= submit_tag "Enter Your Payment Method", :class => 'btn btn-default' %></li>
+  <li><%= submit_tag "Enter Your Payment Method", :class => 'btn btn-success', id: "payment-method-btn" %></li>
   <% end %>
 <% end %>
 
 <% if current_user.stripe_customer_id != nil %>
   <%= form_tag new_customer_path, :method => :get do %>
-  <li><%= submit_tag "Update Your Payment Method", :class => 'btn btn-default' %></li>
+  <li><%= submit_tag "Update Your Payment Method", :class => 'btn btn-success', id: "payment-method-btn" %></li>
   <% end %>
 <% end %>
 
 <h2>Let us pay you</h2>
 <!-- <li>< link_to "Option 1. Connect Your Checking Account via Stripe", payments_path %></li> -->
-<li><a href="https://connect.stripe.com/oauth/authorize?response_type=code&client_id=ca_3RZ0RC5ou8eIzbhddmzibN6kWg3fAtoI&scope=read_write&state=1234
-" class="btn btn-default">Connect Your Stripe Account</a></li>
+<li><a id="connect-stripe-btn" href="https://connect.stripe.com/oauth/authorize?response_type=code&client_id=ca_3RZ0RC5ou8eIzbhddmzibN6kWg3fAtoI&scope=read_write&state=1234" class="btn btn-success", id: "connect-stripe-btn">Connect Your Stripe Account</a></li>
 
 <!-- <h2>For option 1: transfer your available funds</h2>
 < link_to "Collect Funds", transfers_path %>
@@ -60,6 +59,6 @@
 
 <h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %></p>
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :class => 'btn btn-success', id: "profile-update-btn", :method => :delete %></p>
 
 <%= link_to "Back", :back %>

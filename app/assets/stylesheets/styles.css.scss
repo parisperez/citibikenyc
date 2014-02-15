@@ -654,8 +654,21 @@ address a {
     margin-left: 55px;
 }
 
-#continue-btn {
+li {
+    color: #363636 !important;
+}
+
+#continue-btn, #payment-method-btn, #counter-btn, #claim-btn, #select-btn, #profile-update-btn, #update-btn #connect-stripe-btn {
     color: #ffffff;
+}
+
+#select-btn {
+    margin-top: 10px;
+    margin-bottom: 16px;
+}
+
+#counter-btn {
+    margin-left: 90px;
 }
 
 #please-rate {
@@ -667,8 +680,28 @@ address a {
     border-radius: 10px;
 }
 
-li {
-    color: #363636 !important;
+#connect-stripe-btn {
+    color: #ffffff;
+}
+
+#password {
+    margin-bottom: 20px;
+}
+
+#headline-field, #img-field, #email-field {
+    width: 260px;
+}
+
+#account-update-headline {
+    margin-top: -10px;
+}
+
+#connect-stripe-btn {
+    margin-left: 25px;
+}
+
+#payment-method-btn {
+    margin-left: 30px;
 }
 
 } 

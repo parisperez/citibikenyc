@@ -56,7 +56,7 @@
     <% end %>
 
     <% if @exchange.user_id != current_user.id && @exchange.vendor_id == nil %> 
-        <li><%= button_to "Claim", claim_exchange_path, :id => @exchange.id, :method => :put %></li>
+        <li><%= button_to "Claim", claim_exchange_path, :id => @exchange.id, :class => 'btn btn-success', :id => 'claim-btn', :method => :put %></li>
     <% end %> 
 
     <% if current_user.id == @exchange.vendor_id && @exchange.status != "completed" %> 
