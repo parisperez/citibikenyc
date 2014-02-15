@@ -46,7 +46,8 @@ max-height: 180px">
 
 <script type="text/javascript">
 $(function(){
-Stripe.setPublishableKey('<%= Rails.configuration.stripe[:publishable_key] %>');
+Stripe.setPublishableKey('<%= @vendor.stripe[:publishable_key] %>');
+// Stripe.setPublishableKey('<%= Rails.configuration.stripe[:publishable_key] %>');
 });
 
 $('#payment-form').submit(function(event) {

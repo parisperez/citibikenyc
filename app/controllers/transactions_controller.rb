@@ -25,6 +25,7 @@ class TransactionsController < ApplicationController
     @exchange = Exchange.find_by!(
       id: params[:id]
       )
+      @vendor = User.find_by(id: @exchange.vendor_id)
       # mark as completed
       @exchange.status = "completed"
       @exchange.save! 
