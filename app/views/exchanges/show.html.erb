@@ -60,7 +60,7 @@
     <% end %> 
 
     <% if current_user.id == @exchange.vendor_id && @exchange.status != "completed" %> 
-        <li><%= button_to "Complete", buy_path, :id => @exchange.id, :method => :post %></li>
+        <li><%= button_to "Complete", buy_path, :class => 'btn btn-success', :id => 'complete-btn', :method => :post %></li>
     <% end %> 
   </ul>
 
