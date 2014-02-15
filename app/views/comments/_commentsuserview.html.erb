@@ -1,5 +1,10 @@
-<div class="well" id="reviews">
-  <h3>COUNTER OFFERS</h3>
+<div class="panel panel-default" id="leave-review">
+  <div class="panel-heading">
+    <div class="panel-title">
+      <h3>COUNTER OFFERS</h3>
+    </div>
+  </div>
+ <div class="panel-body"> 
     <table class="table" id="comments">
       <% @comments.each do |comment| %>
          <% commenter = User.find_by(id: comment.commenter_id) %>
@@ -16,4 +21,5 @@
           <!-- end %> -->
       <% end %>
     </table>
+  </div>  
 </div>    

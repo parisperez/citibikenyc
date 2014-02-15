@@ -285,7 +285,7 @@ h7 {
 
 .commenter {
     width: 90px;
-    height: 60px;
+    height: 90px;
 }
 
 .comment-form {
@@ -643,6 +643,32 @@ address a {
 
 #exchanges-headline {
     font-size: 34px;
+}
+
+.commenter {
+    width: 70px;
+    height: 70px;
+}
+
+#rating {
+    margin-left: 55px;
+}
+
+#continue-btn {
+    color: #ffffff;
+}
+
+#please-rate {
+    font-size: 26px;
+    color: purple;
+    background-color: pink;
+    padding: 5px;
+    padding-bottom: 7px;
+    border-radius: 10px;
+}
+
+li {
+    color: #363636 !important;
 }
 
 } 

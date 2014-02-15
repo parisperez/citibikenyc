@@ -1,41 +1,48 @@
-<div class="well">
-
 <!-- please rate -->
   <% if current_user.id == @exchange.user_id && @exchange.status == "completed" %>
-    <h2>Please rate your angel:</h2>
+    <h2 id="please-rate">Please rate your angel:</h2>
   <% end %>
     <% if current_user.id == @exchange.vendor_id && @exchange.status == "completed" %>
-    <h2>Please rate your client:</h2>
+    <h2 id="please-rate">Please rate your client:</h2>
   <% end %>
   
-  <ul>
+  <ul id="user-profile">
     <% if current_user.id == @exchange.user_id && @exchange.vendor_id != nil %>
-      <li>Your Angel's Info</li>
-      <li><img class="profile-image" src="<%= @vendor.image_url %>" alt="profile image"></li>
-      <li>username: <%= @vendor.username %></li>
+      <li id="profile-info">Your Angel's Info</li>
+      <li id="profile-info"><img class="img-circle" id="profile-image"  src="<%= @vendor.image_url %>" alt="profile image"></li>
+      <li id="profile-info">username: <%= @vendor.username %></li>
       <% unless @vendor.headline == nil %>
       <li id="profile-info"><%= @vendor.headline %></li>
   <% end %>
-      <li><%= rating_for @vendor %></li>
-      <li>phone: <%= @vendor.phone_number%></li>
+      <li id="rating"><%= rating_for @vendor %></li>
+      <li id="profile-info">phone: <%= @vendor.phone_number%></li>
     <% end %>
 
 
     <% if current_user.id == @exchange.vendor_id %>
-      <li>Your Customer's Info</li>
+      <li id="profile-info">Your Customer's Info</li>
       <% if @user.image_url.length != 0 %>
-        <li><img class="profile-image" src="<%= @user.image_url %>" alt="profile image"></li>
+        <li id="profile-info"><img class="img-circle" id="profile-image"  src="<%= @user.image_url %>" alt="profile image"></li>
       <% end %>
-      <li>username: <%= @user.username %></li>
-      <li><%= rating_for @user %></li>
+      <li id="profile-info">username: <%= @user.username %></li>
+      <li id="rating"><%= rating_for @user %></li>
       <% unless @user.headline == nil %>
     <li id="profile-info"><%= @user.headline %></li>
     <% end %>
-      <li>phone: <%= @user.phone_number%></li>
+      <li id="profile-info">phone: <%= @user.phone_number%></li>
     <% end %>
+
+      <% if current_user.id == @exchange.user_id && @exchange.status == "completed" %>
+    <li><%= button_to "Continue", rated_exchange_path, :id => 'continue-btn', :class => 'btn btn-success', :method => :put %></li>
+  <% end %>
+
+  <% if current_user.id == @exchange.vendor_id && @exchange.status == "completed" %>
+    <li><%= button_to "Continue", rated_vendor_exchange_path, :class => 'btn btn-success', :id => 'continue-btn', :method => :put %></li>
+  <% end %>
 
 <!-- exchange info -->
 
+<% unless @exchange.status == 'completed' %>
     <li>Station: <%= @exchange.station %></li>
     <li>Time: <%= @exchange.transform_time %></li>
     <li>Price: <%= number_to_currency(@exchange.price, :unit => "$")  %></li>
@@ -56,7 +63,8 @@
         <li><%= button_to "Complete", buy_path, :id => @exchange.id, :method => :post %></li>
     <% end %> 
   </ul>
-</div>
+
+<% end %>
 
 <div class="comment-form">
   <% if @exchange.user_id != current_user.id && @exchange.vendor_id == nil %> 
@@ -75,14 +83,6 @@
       <% end %>  
     <% end %> 
   <% end %> 
-
-  <% if current_user.id == @exchange.user_id && @exchange.status == "completed" %>
-    <li><%= button_to "Continue", rated_exchange_path, :id => @exchange.id, :method => :put %></li>
-  <% end %>
-
-  <% if current_user.id == @exchange.vendor_id && @exchange.status == "completed" %>
-    <li><%= button_to "Continue", rated_vendor_exchange_path, :id => @exchange.id, :method => :put %></li>
-  <% end %>
 
 <% content_for :javascript_includes do %>
   <%= javascript_include_tag 'jquery.raty.js','letsrate.js'%>
