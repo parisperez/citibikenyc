@@ -12,4 +12,5 @@ class StripeConnectController < ApplicationController
       flash[:notice] = "Something went wrong."
     end
   end
+  erb :stripeconnect
 end
