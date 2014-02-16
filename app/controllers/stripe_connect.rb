@@ -1,7 +1,6 @@
 class StripeConnectController < ApplicationController
 
   def create
-    # binding.pry
     auth_hash = params[:auth_hash]
     current_user.stripe_id = auth_hash['uid']
     current_user.stripe_access_key = auth_hash['credentials']['token']
@@ -13,7 +12,7 @@ class StripeConnectController < ApplicationController
       redirect_to root_path
       flash[:notice] = "Something went wrong."
     end
-    render :new
+    # render :new
   end
 
 end
