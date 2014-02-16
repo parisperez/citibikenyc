@@ -11,7 +11,7 @@ class StripeConnectController < ApplicationController
       redirect_to edit_user_registration(current_user)
       flash[:notice] = "Something went wrong."
     end
-    render :stripeconnect
+    render :new
   end
 
 end
