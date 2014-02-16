@@ -6,6 +6,6 @@ class StripeConnectController < ApplicationController
     current_user.stripe_publishable_key = auth_hash['info']['stripe_publishable_key']
     current_user.save!
     flash[:notice] = "Stripe info saved"
-    redirect_to '/'
+    redirect_to user_path(current_user)
   end
 end
