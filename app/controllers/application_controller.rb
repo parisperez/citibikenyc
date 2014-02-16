@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
     else
       user_path(current_user.id)  
     end
-    å
+  
   end
 
   def after_registration_path_for(resource)
