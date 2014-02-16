@@ -1,12 +1,11 @@
 class StripeConnectController < ApplicationController
-  self.before_action( :set_user )
 
   def create
     auth_hash = params[:auth_hash]
-    @user.stripe_id = auth_hash['uid']
-    @user.stripe_access_key = auth_hash['credentials']['token']
-    @user.stripe_publishable_key = auth_hash['info']['stripe_publishable_key']
-    if @user.save
+    current_user.stripe_id = auth_hash['stripe_user_id']
+    current_user.stripe_access_key = auth_hash['access_token']
+    current_user.stripe_publishable_key = auth_hash['stripe_publishable_key']
+    if current_user.save
       flash[:notice] = "Stripe info saved"
       redirect_to root_path
     else
@@ -14,12 +13,6 @@ class StripeConnectController < ApplicationController
       flash[:notice] = "Something went wrong."
     end
     render :new
-  end
-
-private
-
-  def set_user
-    @user = current_user
   end
 
 end
