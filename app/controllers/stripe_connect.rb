@@ -6,12 +6,12 @@ class StripeConnectController < ApplicationController
     current_user.stripe_publishable_key = auth_hash['info']['stripe_publishable_key']
     if current_user.save
       flash[:notice] = "Stripe info saved"
-      redirect_to edit_user_registration(current_user)
+      redirect_to root_path
     else
-      redirect_to edit_user_registration(current_user)
+      redirect_to root_path
       flash[:notice] = "Something went wrong."
     end
-    render :new
+    # render :new
   end
 
 end
