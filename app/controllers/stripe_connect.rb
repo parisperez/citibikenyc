@@ -11,7 +11,7 @@ class StripeConnectController < ApplicationController
       redirect_to root_path
       flash[:notice] = "Something went wrong."
     end
-    # render :new
+    render :new
   end
 
 end
