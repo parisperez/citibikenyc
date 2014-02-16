@@ -16,6 +16,16 @@ ActiveRecord::Schema.define(version: 20131208230535567) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "angels", force: true do |t|
+    t.string   "firstname",  null: false
+    t.string   "lastname",   null: false
+    t.string   "email",      null: false
+    t.text     "info"
+    t.string   "twitter"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "appointments", force: true do |t|
     t.string   "date"
     t.string   "hour"

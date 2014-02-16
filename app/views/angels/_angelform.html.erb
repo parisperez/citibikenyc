@@ -1,0 +1,30 @@
+<h3>ANGEL FORM</h3>
+  <%= form_for [@angel] do |f| %>
+
+  <div class="form-group">
+    <%= f.label :firstname, id: "label" %>
+    <%= f.text_field :firstname, :value => params[:firstname], class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :lastname, id: "label" %>
+    <%= f.text_field :lastname, :value => params[:lastname], class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :email, id: "label" %>
+    <%= f.email_field :email, :value => params[:firstname], class: "form-control" %>
+  </div>
+
+ <div class="form-group">
+    <%= f.label :info, "Why do you want to be an Angel?", id: "label" %>
+    <%= f.text_area :info, :value => params[:info], class: "form-control" %>
+</div>
+
+ <div class="form-group">
+    <%= f.label :twitter, id: "label" %>
+    <%= f.text_field :twitter, :value => params[:twitter], class: "form-control" %>
+</div>
+
+  <%= f.submit "Submit", class: "btn btn-default", id: "signup-btn" %>
+  <% end %> 

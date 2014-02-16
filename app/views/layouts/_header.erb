@@ -13,16 +13,16 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
-
-            <% if user_signed_in? %>
             <li><%= link_to "SendAngel", root_path %> </li>
-            <li><%= link_to "My Account", account_path %> </li>
-            <!-- <li>< link_to "New Exchange", new_exchange_path %> </li> --> 
-             
+            <li id="not-signed-in"><%= link_to "Sign Up", new_user_registration_path %></li>
+            <li id="not-signed-in"><%= link_to "Sign In", new_user_session_path %></li>
+            <li id="not-signed-in"><%= link_to "Getting Started", about_path %> </li>
+            <% if user_signed_in? %>
+            <li><%= link_to "My Account", account_path %> </li>             
             <% if current_user.role == "vendor" %>
               <li> <%= link_to "Available Exchanges", exchanges_path %> </li>
             <% end %>
-
+        
             <li><%= link_to "New Search", new_search_path %> </li>
             <li><%= link_to "My Profile", user_path(current_user) %></li>
             <li><a href="http://citibikenyc.com/stations"target="_blank">Station Map</a></li>

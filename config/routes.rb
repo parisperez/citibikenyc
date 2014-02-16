@@ -18,6 +18,7 @@ Citibike::Application.routes.draw do
   resources :stripe_events, only: [:create]
   resources :sales
   resources :customers
+  resources :angels
 
   get "comments/index"
   get "comments/new"

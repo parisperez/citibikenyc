@@ -9,6 +9,7 @@ class WelcomeController < ApplicationController
   end
 
   def about
+    @angel = Angel.new
     render :about
   end
 

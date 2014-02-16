@@ -1,0 +1,12 @@
+
+<ul>
+<% @angels.each do |angel| %>
+  <li>First Name: <%= angel.firstname %></li>
+  <li>Last Name: <%= angel.lastname %></li>
+  <li>Email: <%= angel.email %></li>
+  <li>Why do you want to be an Angel? <%= angel.info %></li>
+  <li>Twitter handle: <%= angel.twitter %></li>
+  <br>
+  <br>
+<% end %>
+</ul>
