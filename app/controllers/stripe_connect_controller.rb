@@ -8,9 +8,8 @@ class StripeConnectController < ApplicationController
     current_user.stripe_publishable_key = @response['stripe_publishable_key']
     if current_user.save
       flash[:notice] = "Stripe info saved"
-      redirect_to root_path
     else
-      redirect_to root_path
+      # redirect_to root_path
       flash[:notice] = "Something went wrong."
     end
     render :new
