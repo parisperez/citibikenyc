@@ -12,7 +12,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       redirect_to root_path
       flash[:notice] = "Something went wrong."
     end
-    render :new
+    render :callback
     raise request.env["omniauth.auth"].to_yaml
   end
   
