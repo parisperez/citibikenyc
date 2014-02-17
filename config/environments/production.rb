@@ -125,14 +125,4 @@ Citibike::Application.configure do
   password: ENV["GMAIL_PASSWORD"]
   }
 
-  # config.action_mailer.smtp_settings = {
-  # address: "oxmail.registrar-servers.com",
-  # port: 25,
-  # domain: ENV["GMAIL_DOMAIN"],
-  # authentication: "Normal Password",
-  # enable_starttls_auto: true,
-  # user_name: ENV["GMAIL_USERNAME"],
-  # password: ENV["GMAIL_PASSWORD"]
-  # }
-
 end
