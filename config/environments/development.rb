@@ -45,4 +45,7 @@ user_name: ENV["GMAIL_USERNAME"],
 password: ENV["GMAIL_PASSWORD"]
 }
 
+STRIPE_PUBLISHABLE_KEY="pk_test_78JfzKOc6b2AHF9PVbHe37aK"
+STRIPE_SECRET_KEY="sk_test_tpq7oUZzfNAPjyzD5E8Nln0I"
+
 end
