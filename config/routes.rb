@@ -13,7 +13,7 @@ Citibike::Application.routes.draw do
   get '/transfers/confirm', to: 'transfers#confirm'
 
   # stripe connect
-  # get '/auth/stripe_connect/callback', to: 'stripe_connect#create'
+  get '/auth/stripe_connect/callback', to: 'stripe_connect#create'
 
   resources :stripe_events, only: [:create]
   resources :sales
@@ -32,7 +32,7 @@ Citibike::Application.routes.draw do
     resources :comments
   end
 
-  devise_for :users, :path => "auth", :path_names => { :sign_in => 'login', :sign_out => 'logout' }, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+  devise_for :users, :path => "auth", :path_names => { :sign_in => 'login', :sign_out => 'logout' }
   resources :users do
     resources :comments
     resources :favorites
