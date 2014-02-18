@@ -39,7 +39,7 @@ class TransactionsController < ApplicationController
     # sale record
     sale = @exchange.sales.create(
       amount: @exchange.price * 100,
-      customer: customer_token,
+      customer_id: customer_token,
       sendangel_fee: @exchange.price * 100 * 0.2,
       email: params[:email],
       stripe_token: params[:stripeToken],
