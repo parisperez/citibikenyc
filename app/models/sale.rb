@@ -33,7 +33,7 @@ class Sale < ActiveRecord::Base
         :card => stripe_token,
         :application_fee => self.sendangel_fee,
         },
-        current_user.stripe_access_key
+        @vendor.stripe_access_key
       )
       
       # charge = Stripe::Charge.create(
