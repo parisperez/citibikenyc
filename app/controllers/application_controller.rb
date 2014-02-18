@@ -32,4 +32,8 @@ class ApplicationController < ActionController::Base
     new_customer_path
   end
 
+  def set_current_user
+    User.current_user = current_user
+  end
+
 end

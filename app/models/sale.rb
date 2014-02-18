@@ -1,5 +1,10 @@
 class Sale < ActiveRecord::Base
   belongs_to :exchange
+  belongs_to :vendor,
+    :class_name => 'User',
+    :primary_key => 'id',
+    :foreign_key => 'vendor_id' 
+
   before_create :populate_guid
   has_paper_trail
   include AASM
@@ -33,7 +38,7 @@ class Sale < ActiveRecord::Base
         :card => stripe_token,
         :application_fee => self.sendangel_fee,
         },
-        @vendor.stripe_access_key
+        vendor.stripe_access_key
       )
       
       # charge = Stripe::Charge.create(

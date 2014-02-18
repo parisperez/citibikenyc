@@ -11,8 +11,10 @@ class User < ActiveRecord::Base
   letsrate_rater
   has_many :comments, as: :commentable  
   has_many :favorites
+  has_many :sales
   has_many :received_exchanges,
   :class_name => 'Exchange',
   :primary_key => 'user_id',
-  :foreign_key => 'vendor_id'
+  :foreign_key => 'vendor_id'  
+
 end

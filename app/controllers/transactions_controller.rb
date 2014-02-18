@@ -29,7 +29,6 @@ class TransactionsController < ApplicationController
       @exchange.status = "completed"
       @exchange.save! 
       # charge customer
-      @vendor = User.find_by(id: @exchange.vendor_id)
       exchange_user = User.find_by(id: @exchange.user_id)
       stripe_customer_id = exchange_user.stripe_customer_id 
     # sale record
@@ -39,7 +38,8 @@ class TransactionsController < ApplicationController
       email: params[:email],
       stripe_token: params[:stripeToken],
       vendor_id: @exchange.vendor_id,
-      customer_id: stripe_customer_id
+      customer_id: stripe_customer_id,
+      vendor: current_user
       )
     sale.process!
     if sale.finished?
