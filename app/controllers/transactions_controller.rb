@@ -32,7 +32,7 @@ class TransactionsController < ApplicationController
       exchange_user = User.find_by(id: @exchange.user_id)
       stripe_customer_id = exchange_user.stripe_customer_id 
       customer_token = Stripe::Token.create(
-        {:customer => exchange_user.customer_id,
+        {:customer => exchange_user.stripe_customer_id,
         },
         current_user.stripe_access_key      
       )
