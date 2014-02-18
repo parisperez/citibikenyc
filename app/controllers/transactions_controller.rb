@@ -22,6 +22,7 @@ class TransactionsController < ApplicationController
   end
 
   def create
+    Stripe.api_key = "pk_test_78JfzKOc6b2AHF9PVbHe37aK"
     @exchange = Exchange.find_by!(
       id: params[:id]
       )
@@ -30,19 +31,12 @@ class TransactionsController < ApplicationController
       @exchange.save! 
       # charge customer
       exchange_user = User.find_by(id: @exchange.user_id)
-      stripe_customer_id = exchange_user.stripe_customer_id 
-      customer_token = Stripe::Token.create(
-        {:customer => exchange_user.stripe_customer_id,
-        },
-        current_user.stripe_access_key      
-      )
     # sale record
     sale = @exchange.sales.create(
       amount: @exchange.price * 100,
-      customer_id: customer_token,
       sendangel_fee: @exchange.price * 100 * 0.2,
+      customer_id: exchange_user.stripe_customer_id,
       email: params[:email],
-      stripe_token: params[:stripeToken],
       vendor_id: @exchange.vendor_id,
       vendor: current_user
       )

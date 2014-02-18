@@ -7,6 +7,7 @@ class StripeConnectController < ApplicationController
     current_user.stripe_id = @response['stripe_user_id']
     current_user.stripe_publishable_key = @response['stripe_publishable_key']
     if current_user.save
+      # binding.pry
       flash[:notice] = "Stripe info saved"
     else
       # redirect_to root_path
