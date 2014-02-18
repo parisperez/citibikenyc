@@ -30,15 +30,10 @@ class Sale < ActiveRecord::Base
   def charge_card
     begin
       save!   
-      Stripe::Token.create(
-        {:customer => self.customer_id,
-        },
-        vendor.stripe_access_key      
-      )
       charge = Stripe::Charge.create(
       {
         :amount   => self.amount,
-        :customer => self.customer_id,
+        :customer => self.customer,
         :currency => "usd",
         :card => stripe_token,
         :application_fee => self.sendangel_fee,

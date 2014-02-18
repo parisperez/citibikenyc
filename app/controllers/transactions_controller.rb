@@ -31,14 +31,19 @@ class TransactionsController < ApplicationController
       # charge customer
       exchange_user = User.find_by(id: @exchange.user_id)
       stripe_customer_id = exchange_user.stripe_customer_id 
+      customer_token = Stripe::Token.create(
+        {:customer => exchange_user.customer_id,
+        },
+        current_user.stripe_access_key      
+      )
     # sale record
     sale = @exchange.sales.create(
       amount: @exchange.price * 100,
+      customer: customer_token,
       sendangel_fee: @exchange.price * 100 * 0.2,
       email: params[:email],
       stripe_token: params[:stripeToken],
       vendor_id: @exchange.vendor_id,
-      customer_id: stripe_customer_id,
       vendor: current_user
       )
     sale.process!
