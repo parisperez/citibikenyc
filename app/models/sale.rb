@@ -38,6 +38,7 @@ class Sale < ActiveRecord::Base
       charge = Stripe::Charge.create(
       {
         :amount   => self.amount,
+        :customer => self.customer_id,
         :currency => "usd",
         :card => stripe_token,
         :application_fee => self.sendangel_fee,
