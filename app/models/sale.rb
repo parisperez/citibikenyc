@@ -30,7 +30,7 @@ class Sale < ActiveRecord::Base
         :amount   => self.amount,
         :currency => "usd",
         :customer => self.customer_id,
-        :card: params[:stripeToken],
+        :card => stripe_token,
         :application_fee => self.sendangel_fee,
         },
         current_user.stripe_access_key
