@@ -14,7 +14,7 @@
       <% unless @vendor.headline == nil %>
       <li id="profile-info"><%= @vendor.headline %></li>
   <% end %>
-      <li id="rating"><%= rating_for @vendor %></li>
+      <center><li id="rating"><%= rating_for @vendor %></li></center>
       <li id="profile-info">phone: <%= @vendor.phone_number%></li>
     <% end %>
 
@@ -25,7 +25,7 @@
         <li id="profile-info"><img class="img-circle" id="profile-image"  src="<%= @user.image_url %>" alt="profile image"></li>
       <% end %>
       <li id="profile-info">username: <%= @user.username %></li>
-      <li id="rating"><%= rating_for @user %></li>
+      <center><li id="rating"><%= rating_for @user %></li></center>
       <% unless @user.headline == nil %>
     <li id="profile-info"><%= @user.headline %></li>
     <% end %>
