@@ -4,7 +4,7 @@ class CustomersController < ApplicationController
   end
 
   def create
-    Stripe.api_key = "sk_test_tpq7oUZzfNAPjyzD5E8Nln0I"
+    Stripe.api_key = "sk_test_TuslzVg7qG52KXZXdbKwy7pD"
     # Get the credit card details submitted by the form
     token = params[:stripeToken]
     # binding.pry

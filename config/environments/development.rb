@@ -45,9 +45,9 @@ user_name: ENV["GMAIL_USERNAME"],
 password: ENV["GMAIL_PASSWORD"]
 }
 
-Stripe.api_key = "pk_test_78JfzKOc6b2AHF9PVbHe37aK"
+Stripe.api_key = "pk_test_jJTW6rEPiNeH3l014K785uno"
 STRIPE_PUBLISHABLE_KEY="pk_test_78JfzKOc6b2AHF9PVbHe37aK"
-STRIPE_SECRET_KEY="sk_test_tpq7oUZzfNAPjyzD5E8Nln0I"
+STRIPE_SECRET_KEY="sk_test_TuslzVg7qG52KXZXdbKwy7pD"
 STRIPE_CONNECT_CLIENT_ID="ca_3RZ0RC5ou8eIzbhddmzibN6kWg3fAtoI"
 
 end
