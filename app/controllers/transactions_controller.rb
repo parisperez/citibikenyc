@@ -45,7 +45,7 @@ class TransactionsController < ApplicationController
       redirect_to pickup_url(guid: sale.guid)
     else
       flash.now[:alert] = sale.error
-      render :new
+      render :error
     end
   end
   

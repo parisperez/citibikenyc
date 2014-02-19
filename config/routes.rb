@@ -3,6 +3,7 @@ Citibike::Application.routes.draw do
   get '/buy/:id', to: 'transactions#new', as: :show_buy
   post '/buy/:id', to: 'transactions#create', as: :buy
   get '/pickup/:guid', to: 'transactions#pickup', as: :pickup
+  get '/buy/error', to: 'transactions#error', as: :error
   get '/download/:guid', to: 'transactions#download', as: :download
   match '/iframe/:id' => 'transactions#iframe', via: :get, as: :buy_iframe
   get '/payments', to: 'payments#new'
