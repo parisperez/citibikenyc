@@ -38,13 +38,22 @@ max-height: 180px">
 <% end %>
 </div>
 
-
+<!-- < content_for :js do %> -->
+<!-- < javascript_include_tag "charges_script" %> -->
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 
 <script type="text/javascript">
+
 $(function(){
+// Stripe.setPublishableKey('pk_test_78JfzKOc6b2AHF9PVbHe37aK');
 Stripe.setPublishableKey('<%= Rails.configuration.stripe[:publishable_key] %>');
 });
+// Stripe.card.createToken({
+//     number: $('.card-number').val(),
+//     cvc: $('.card-cvc').val(),
+//     exp_month: $('.card-expiry-month').val(),
+//     exp_year: $('.card-expiry-year').val()
+// }, stripeResponseHandler);
 
 $('#payment-form').submit(function(event) {
 var form = $(this);
@@ -52,6 +61,7 @@ form.find('button').prop('disabled', true);
 Stripe.createToken(form, stripeResponseHandler);
 return false;
 });
+
 function stripeResponseHandler(status, response) {
 var form = $('#payment-form');
 if (response.error) {
@@ -65,3 +75,4 @@ form.get(0).submit();
 }
 </script>
 
+<!-- < end %> -->
