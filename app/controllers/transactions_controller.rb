@@ -22,8 +22,7 @@ class TransactionsController < ApplicationController
   end
 
   def create
-    # Stripe.api_key = "sk_test_TuslzVg7qG52KXZXdbKwy7pD"
-
+    # Hallelujah
     @exchange = Exchange.find_by!(
       id: params[:id]
       )
