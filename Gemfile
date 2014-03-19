@@ -12,7 +12,7 @@ gem 'multi_json', '~> 1.7.7'
 gem 'citibikenyc', '~> 0.0.1'
 gem 'geocoder', '~> 1.1.8'
 gem 'rails_12factor', group: :production
-gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass', branch: '3'
+gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'
 gem 'stripe'
 gem 'cancan'
 gem "letsrate", "~> 1.0.8"
